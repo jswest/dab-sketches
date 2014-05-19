@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Damnatio ad Bestias</title>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+nav.primary-nav {
+  background-color: rgb(0,0,0);
+  position: relative;
+  width: 100%;
+  height: 40px;
+  z-index: 2;
+}
+nav.primary-nav h1 {
+  color: rgb(255,255,255);
+  font-family: "Source Sans Pro";
+  font-size: 20px;
+  letter-spacing: 2px;
+  line-height: 40px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  text-transform: uppercase;
+  height: 40px;
+  width: 100%;
+}
+nav.primary-nav .menu-wrapper {
+  border-radius: 4px;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+}
+nav.primary-nav .menu-wrapper .line {
+  background-color: rgb(255,255,255);
+  position: relative;
+  margin-bottom: 9px;
+  margin-left: 3px;
+  width: 24px;
+  height: 1px;
+}
+nav.primary-nav .menu-wrapper .line:first-child {
+  margin-top: 4px;
+}
+.content {
+  background-color: rgb(35,31,32);
+  padding-top: 40px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.content h1.primary-title {
+  color: rgb(255,255,255);
+  font-family: "Source Sans Pro";
+  font-size: 80px;
+  font-weight: 100;
+  letter-spacing: 8px;
+  line-height: 80px;
+  margin-top: -140px;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  height: 160px;
+}
+.content h2.byline {
+  color: rgb(255,255,255);
+  font-family: "Source Sans Pro";
+  font-size: 20px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  margin-top: 160px;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  height: 20px;
+}
+nav.mini-map {
+  //background-color: rgb(140,124,128);
+  background-color: rgba(255,255,255,.1);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: -200px;
+  width: 220px;
+  height: 100%;
+  -webkit-transition: all 500ms;
+          transition: all 500ms;
+}
+nav.mini-map:hover {
+  right: 0;
+}
+nav.mini-map svg {
+  margin-top: 40px;
+}
+nav.mini-map svg rect {
+  fill: rgb(0,174,239);
+  opacity: 0;
+  -webkit-transition: all 500ms;
+          transition: all 500ms;
+}
+nav.mini-map:hover svg rect {
+  display: block;
+  opacity: 1;
+}
+nav.mini-map .pointer {
+  background-color: rgb(140,124,128);
+  position: absolute;
+  left: -15px;
+  width: 20px;
+  height: 3px;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="primary-nav">
+      <h1 class="primary-nav-title">Damnatio ad Bestias</h1>
+      <div class="menu-wrapper">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+    <div class="content">
+      <h1 class="primary-title">Damnatio ad<br>Bestias</h1>
+      <h2 class="byline">By John West<br>&amp; Gabe Isman</h2>
+    </div>
+    <nav class="mini-map">
+    </nav>
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/d3.min.js"></script>
+    <script>
+
+      var data = [];
+      for (var i = 0; i < 407; i++) {
+        data.push({
+          "y": i,
+          "x": Math.round(Math.random() * 200)
+        });
+      }
+
+      var arrows = [];
+      var i = Math.random() * 100;
+      while (i < 407) {
+        arrows.push( i );
+        i += Math.random() * 100;
+      }
+
+      var svg = d3.select('nav.mini-map').append('svg')
+        .attr('width', 200)
+        .attr('height', ($('nav.mini-map').height() * 2) - 40);
+
+      var x = d3.scale.linear()
+        .domain([0, 200])
+        .range([0, 200]);
+      var y = d3.scale.linear()
+        .domain([0,407])
+        .range([0, $('nav.mini-map').height() * 2]);
+
+      var rects = svg.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('width', function (d) {return x(d.x);})
+        .attr('x', function (d) {return 220 - x(d.x);})
+        .attr('height', y(1) - 1)
+        .attr('y', function (d) {return y(d.y);});
+
+      for (var i = 0; i < arrows.length; i++ ) {
+        $('.mini-map').append('<div class="pointer"></div>');
+        $('.pointer').eq(i).css({
+          'top': y(arrows[i]) + (y(1) / 2) - 1.5
+        })
+      }
+
+    </script>
+  </body>
+</html>
