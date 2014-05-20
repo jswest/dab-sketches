@@ -14,9 +14,15 @@ body {
   width: 100%;
   height: 100%;
 }
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 nav.primary-nav {
   background-color: rgb(0,0,0);
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 40px;
   z-index: 2;
@@ -56,10 +62,15 @@ nav.primary-nav .menu-wrapper .line:first-child {
 }
 .content {
   background-color: rgb(35,31,32);
-  padding-top: 40px;
+  overflow: scroll;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.panel {
+  margin-top: 40px;
   position: relative;
   width: 100%;
-  height: 100%;
 }
 .content h1.primary-title {
   color: rgb(255,255,255);
@@ -79,9 +90,9 @@ nav.primary-nav .menu-wrapper .line:first-child {
 .content h2.byline {
   color: rgb(255,255,255);
   font-family: "Source Sans Pro Extra Light";
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   margin-top: 160px;
   position: absolute;
   top: 50%;
@@ -126,27 +137,72 @@ nav.mini-map .pointer {
   width: 20px;
   height: 10px;
 }
+h2.panel-year {
+  color: rgb(255,255,255);
+  font-family: "Source Sans Pro Extra Light";
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  padding-top: 20px;
+  padding-left: 80px;
+  text-align: left;
+}
+h1.panel-title {
+  color: rgb(140,124,128);
+  font-family: "Source Sans Pro Black";
+  font-size: 60px;
+  padding-top: 20px;
+  padding-left: 60px;
+}
+.panel-text p {
+  color: rgb(200,200,200);
+  font-family: "Garamond";
+  font-size: 18px;
+  line-height: 27px;
+  margin-top: 27px;
+  padding-left: 60px;
+  max-width: 900px;
+  min-width: 320px;
+  width: 90%;
+}
+.panel-text p a {
+  color: inherit;
+  font-weight: 800;
+}
     </style>
   </head>
   <body>
-    <nav class="primary-nav">
-      <h1 class="primary-nav-title">Damnatio ad Bestias</h1>
-      <div class="menu-wrapper">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+    <div class="wrapper">
+      <nav class="primary-nav">
+        <h1 class="primary-nav-title">Damnatio ad Bestias</h1>
+        <div class="menu-wrapper">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="panel">
+          <h1 class="primary-title">Damnatio ad<br>Bestias</h1>
+          <h2 class="byline">By John West<br>&amp; Gabe Isman</h2>
+        </div>
+        <div class="panel">
+          <h2 class="panel-year">1607</h2>
+          <h1 class="panel-title">George Kendall</h1>
+          <div class="panel-text">
+            <p>George Kendall was executed by firing squad in Jamestown colony in 1608. Kendall's execution marks the beginning of capital punishment in the colonies that would become the United States.</p>
+            <p>A smithy in Jamestown, James Reed, had struck the president of the colony and was condemned to hang. Before his sentence was carried out, however, Reed implicated Kendall—a member of the Jamestown council—in some kind of conspiracy. Reed was granted a repreive, and <a href="http://etext.lib.virginia.edu/etcbin/jamestown-browse?id=J1023">a firsthand account</a> of Jamestown reads, “Mr Kendall was executed; being shott to death for a mutiny.”</p>
+          </div>
+        </div>
       </div>
-    </nav>
-    <div class="content">
-      <h1 class="primary-title">Damnatio ad<br>Bestias</h1>
-      <h2 class="byline">By John West<br>&amp; Gabe Isman</h2>
+      <nav class="mini-map"></nav>
     </div>
-    <nav class="mini-map">
-    </nav>
 
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/d3.min.js"></script>
     <script>
+
+    $('.content .panel').height($(window).height() - 40);
 
       var data = [];
       for (var i = 0; i < 407; i++) {
