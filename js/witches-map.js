@@ -140,15 +140,29 @@ var WitchesMap = function () {
 			d3.csv( "/data/witches.csv", function ( witches ) {
 				var data = getDataByYear( witches );
 
-				var displayWitch = function ( i ) {
-					displayWitches( projection, data[i] );
-					that.timer = setTimeout( function () {
-						if ( i < data.length ) {
-							displayWitch( i + 1 );							
-						}
-					}, 1500 );		
+				var runAnimation = function () {
+					$('.run-animation-button').hide();
+					var displayWitch = function ( i ) {
+						displayWitches( projection, data[i] );
+						that.timer = setTimeout( function () {
+							if ( i < data.length - 1 ) {
+								displayWitch( i + 1 );							
+							} else {
+								$('#bubbles').remove();
+								$('.executions').empty();
+								$('.year').empty();
+								$('.run-animation-button').show();
+							}
+						}, 1500 );		
+					};
+					displayWitch( 0 );					
 				};
-				displayWitch( 0 );
+
+				$('.witches-panel').append( '<div class="run-animation-button btn">Show Witch Executions over Time</div>' );
+				$('.run-animation-button').on( 'click', function ( e ) {
+					runAnimation();
+				});
+
 			});
 		});
 	}

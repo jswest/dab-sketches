@@ -68,8 +68,9 @@ nav.primary-nav .menu-wrapper .line:first-child {
   width: 100%;
 }
 .panel {
-  margin-top: 40px;
   position: relative;
+  top: 40px;
+  left: 0;
   width: 100%;
 }
 .content h1.primary-title {
@@ -211,14 +212,14 @@ g#bubbles circle:hover {
 }
 h1.year {
   color: rgb(255,255,255);
-  font-family: "Source Sans Pro";
+  font-family: "Source Sans Pro Black";
   position: absolute;
   top: 20px;
   left: 40px;
 }
 ul.executions {
   color: rgb(200,200,200);
-  font-family: "source Sans Pro";
+  font-family: "source Sans Pro Extra Light";
   position: absolute;
   top: 50px;
   left: 40px;
@@ -229,6 +230,23 @@ ul.executions li {
   list-style: none;
   margin-top: 12px;
   text-transform: uppercase;
+}
+.btn {
+  border: 1px solid rgb(200,200,200);
+  border-radius: 20px;
+  color: rgb(200,200,200);
+  cursor: pointer;
+  font-family: "Source Sans Pro Extra Light";
+  font-size: 20px;
+  line-height: 40px;
+  margin-top: -10px;
+  margin-left: -100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  width: 300px;
+  height: 40px;
 }
     </style>
   </head>
@@ -368,6 +386,7 @@ $(document).ready( function () {
   createMiniMap();
   var witchesMap = new WitchesMap();
   witchesMap.on();
+
 });
 
 
