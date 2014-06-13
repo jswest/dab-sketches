@@ -21,7 +21,7 @@ DAB.NameList = function () {
         currentYear = year;
         $(this).before('<div class="year-marker"><h1>' + year + '</h1></div>')
       }
-    })
+    });
     d3.selectAll('.collapsed-name-pane').on('mouseover', function (d, i) {
       if ($('footer.stream-footer').hasClass('hidden')) {
         $('footer.stream-footer').removeClass('hidden');
@@ -40,8 +40,8 @@ DAB.NameList = function () {
       }
     });
   
-    $('.year-marker').eq(0).before('<article class="pane interactive interlude" id="interlude-1"></article>');
-    $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-0"></article>');
+    $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-1"></article>');
+    $('.year-marker').eq(10).before('<article class="pane interactive interlude" id="interlude-0"></article>');
 
 
     d3.json('data/panes.json', function (data) {
@@ -54,20 +54,32 @@ DAB.NameList = function () {
         thisNode.addClass('clickable-name');
         d3.select(thisNode[0]).datum().essay = data[j].essay;
       }
-      $('.clickable-name').on('click', function (e) {
-        if (!$(this).hasClass('expanded-name-pane')) {
-          $(this).removeClass('collapsed-name-pane')
-          $(this).addClass('expanded-name-pane');
-          var streamScrollTop = $('.stream').scrollTop();
-          $('.stream').animate({
-            "scrollTop": streamScrollTop + $(this).offset().top - 44
-          }, 500);
-          var d = d3.select(this).datum();
-          console.log(d)
-          d3.select(this).append('div').attr('class', 'essay-content').html(d.essay)
-          d3.select(this).select('div.essay-content').classed('show', true);
-        }
-      });
+
+      var nameClickHandler = function (e) {
+        $(this)
+          .off('click', nameClickHandler)
+          .removeClass('collapsed-name-pane')
+          .addClass('expanded-name-pane');
+        var streamScrollTop = $('.stream').scrollTop();
+        $('.stream').animate({
+          "scrollTop": streamScrollTop + $(this).offset().top - 44
+        }, 500);
+        var d = d3.select(this).datum();
+        d3.select(this).append('div').attr('class', 'essay-content').html(d.essay)
+        d3.select(this).append('button').attr('class', 'x');
+        d3.select(this).select('div.essay-content').classed('show', true);
+        var thisel = $(this);
+        $(this).find('button.x').on('click', function (e) {
+          console.log('here');
+          thisel.find('button.x').remove();
+          thisel.find('div.essay-content').remove();
+          thisel.removeClass('expanded-name-pane');
+          thisel.addClass('collapsed-name-pane');
+          thisel.on('click', nameClickHandler);
+        });
+      };
+
+      $('.clickable-name').on('click', nameClickHandler);
     });
   });
 
