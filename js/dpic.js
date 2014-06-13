@@ -54,7 +54,7 @@ DAB.ModernExecutionsInteractive = function (el) {
     "hanging": "hanging",
     "other": "other",
     "s": "south",
-    "w"; "west",
+    "w": "west",
     "n": "northeast",
     "m": "midwest"
   };
