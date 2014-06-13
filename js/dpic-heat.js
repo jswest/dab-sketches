@@ -7,7 +7,7 @@ DAB.ModernExecutionsMapInteractive = function (el) {
     'rgb(68,70,79)',
     'rgb(58,86,106)',
     'rgb(37,117,159)',
-    'rgb(0,174,255)'
+    'rgb(0,174,255)',
   ];
   var colorScale = d3.scale.ordinal()
     .domain([0,1,2,3,4])
@@ -16,7 +16,6 @@ DAB.ModernExecutionsMapInteractive = function (el) {
 
   var getRange = function (input) {
     if ( !input || input === "false" || input === 0) {
-      console.log( colorScale(4) );
       return colorScale(0);
 
     } else if (input <= 1) {

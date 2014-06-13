@@ -120,8 +120,7 @@ header.primary-header {
   top: 44px;
   left: 0;
   width: 100%;
-  height: 100%;
-  /* height changed in js */ }
+  height: calc(100% - 44px); }
   .stream-wrapper .stream-modals {
     position: absolute;
     pointer-events: none;
@@ -131,7 +130,7 @@ header.primary-header {
     height: 100%;
     z-index: 2; }
     .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 50%, black 100%);
+      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
       background-size: 100% 100%;
       opacity: .1;
       pointer-events: none;
@@ -217,7 +216,7 @@ header.primary-header {
         margin-left: 44px;
         width: 800px; }
       .stream-wrapper .stream .pane.interactive {
-        margin-top: 88px;
+        margin-top: 176px;
         position: relative;
         height: calc(44px + 100%); }
         .stream-wrapper .stream .pane.interactive svg {
@@ -239,26 +238,28 @@ header.primary-header {
           top: 22px;
           left: 44px; }
         .stream-wrapper .stream .pane.interactive ul.controls {
-          background-color: #463e40;
-          cursor: pointer;
-          overflow: hidden;
           position: absolute;
-          top: 44px;
-          right: 44px;
+          top: 88px;
+          left: 44px;
           width: 264px;
-          height: 22px;
           z-index: 2; }
           .stream-wrapper .stream .pane.interactive ul.controls li {
+            background-color: #463e40;
             color: white;
+            cursor: pointer;
             display: block;
             font-family: "Source Sans Pro Extra Light";
             font-size: 14.66667px;
-            line-height: 22px;
+            line-height: 44px;
             list-style: none;
-            padding-left: 22px;
+            margin-top: 11px;
+            text-align: center;
             text-transform: uppercase;
-            height: 22px; }
-            .stream-wrapper .stream .pane.interactive ul.controls li .current-sort-key {
+            height: 44px; }
+            .stream-wrapper .stream .pane.interactive ul.controls li:hover {
+              background-color: black; }
+            .stream-wrapper .stream .pane.interactive ul.controls li.active {
+              background-color: black;
               font-family: "Source Sans Pro Black"; }
           .stream-wrapper .stream .pane.interactive ul.controls.clicked {
             height: auto; }
@@ -290,7 +291,7 @@ header.primary-header {
             list-style: none;
             margin-left: 44px; }
         .stream-wrapper .stream .pane.name-pane.clickable-name .x {
-          top: 0; }
+          top: 22px; }
         .stream-wrapper .stream .pane.name-pane.clickable-name h1 {
           font-family: "Source Sans Pro Black"; }
         .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane {

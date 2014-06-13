@@ -2,15 +2,14 @@ DAB.ModernExecutionsInteractive = function (el) {
 
   var that = this;
 
-  var sortKey = 'region';
+  var sortKey = 'race';
 
   var createControls = function () {
     el.append(
       '<ul class="controls">' +
-        '<li>sorted by <span class="current-sort-key">' + sortKey + '</span></li>' +
         '<li class="control" data-sort-key="method">method</li>' +
         '<li class="control" data-sort-key="region">region</li>' +
-        '<li class="control" data-sort-key="race">race</li>' +
+        '<li class="control active" data-sort-key="race">race</li>' +
       '</ul>'
     );
     el.find('ul.controls').on('click', function (e) {
@@ -21,21 +20,50 @@ DAB.ModernExecutionsInteractive = function (el) {
   var createTitle = function () {
     el.append('<h3 class="interlude-kicker">Interlude</h3>');
     el.append('<h1 class="interlude-title">Modern Executions</h1>');
-  }
+  };
+
+  var colorIndex = {
+    "white": 0,
+    "black": 1,
+    "latino": 2,
+    "native american": 3,
+    "asian": 4,
+    "other": 5,
+    "lethal injection": 0,
+    "electrocution": 1,
+    "gas chamber": 2,
+    "firing squad": 3,
+    "hanging": 4,
+    "other": 5,
+    "s": 0,
+    "w": 1,
+    "m": 2,
+    "n": 3
+  };
+  var nicenames = {
+    "white": "white",
+    "black": "black",
+    "latino": "latino",
+    "native american"; "native american",
+    "asian": "asian",
+    "other": "other",
+    "lethal injection": "lethal injection",
+    "electrocution": "electrocution",
+    "gas chamber": "gas chamber",
+    "firing squad": "firing squad",
+    "hanging": "hanging",
+    "other": "other",
+    "s": "south",
+    "w"; "west",
+    "n": "northeast",
+    "m": "midwest"
+  };
 
   var sort = function (data, sortKey) {
+    console.log( data[0][sortKey] );
+    console.log(colorIndex[data[0][sortKey]]);
     return data.sort(function (a, b) {
-      if ( a[sortKey] > b[sortKey] ) {
-        return 1;
-      } else if (a[sortKey] < b[sortKey]) {
-        return -1;
-      } else {
-        if (a.name < b.name) {
-          return 1;
-        } else {
-          return -1;
-        }
-      }
+      return colorIndex[a[sortKey]] > colorIndex[b[sortKey]] ? 1 : -1
     });
   };
 
@@ -84,7 +112,17 @@ DAB.ModernExecutionsInteractive = function (el) {
       h = d3.scale.linear()
         .domain([miny, maxy])
         .range([0, sizes.height]);
-      color = d3.scale.category20();
+      var colors = [
+        'rgb(0,89,127)',
+        'rgb(45,90,128)',
+        'rgb(191,134,191)',
+        'rgb(161,161,229)',
+        'rgb(149,207,255)',
+        'rgb(0,174,255)',
+      ];
+      var color = d3.scale.ordinal()
+        .domain([5,4,3,2,1,0])
+        .range(colors)
       oneYearsWidth = x( new Date('2014-01-01')) - x( new Date('2013-01-01'));
 
       var rect = svg.selectAll('rect')
@@ -117,7 +155,7 @@ DAB.ModernExecutionsInteractive = function (el) {
             var ypos = y(indices[date]);
             return 'translate(' + xpos + ',' + ypos + ')';
           })
-          .style( 'fill', function (d, i) { return color(d[sortKey]); } );
+          .style( 'fill', function (d, i) { return color(colorIndex[d[sortKey]]); } );
       };
 
       var update = function (sortKey) {
@@ -155,13 +193,16 @@ DAB.ModernExecutionsInteractive = function (el) {
             var ypos = y(indices[date]);
             return 'translate(' + xpos + ',' + ypos + ')';
           })
-          .style( 'fill', function (d, i) { return color(d[sortKey]); } );
+          .style( 'fill', function (d, i) { return color(colorIndex[d[sortKey]]); } );
       };
 
       el.find('.control').on('click', function (e) {
-        var newSortKey = $(this).data('sort-key');
-        update(newSortKey);
-        el.find('span.current-sort-key').html(newSortKey);
+        if (!$(this).hasClass('active')) {
+          el.find('.control').removeClass('active');
+          $(this).addClass('active');
+          var newSortKey = $(this).data('sort-key');
+          update(newSortKey);          
+        }   
       });
 
       create(sortKey);

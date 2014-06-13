@@ -82,9 +82,6 @@ $(document).ready(function () {
 
 
   var layout = function () {
-    var realWindowHeight = $(window).height() - $('header.primary-header').height();
-    $('.stream-wrapper').css('height', realWindowHeight);
-    $('.pane').css('height', realWindowHeight);    
   };
   var bind = function () {
     var headerAboutButtonClickHandler = function (e) {

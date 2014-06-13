@@ -56,27 +56,28 @@ DAB.NameList = function () {
       }
 
       var nameClickHandler = function (e) {
-        $(this)
-          .off('click', nameClickHandler)
-          .removeClass('collapsed-name-pane')
-          .addClass('expanded-name-pane');
-        var streamScrollTop = $('.stream').scrollTop();
-        $('.stream').animate({
-          "scrollTop": streamScrollTop + $(this).offset().top - 44
-        }, 500);
-        var d = d3.select(this).datum();
-        d3.select(this).append('div').attr('class', 'essay-content').html(d.essay)
-        d3.select(this).append('button').attr('class', 'x');
-        d3.select(this).select('div.essay-content').classed('show', true);
-        var thisel = $(this);
-        $(this).find('button.x').on('click', function (e) {
-          console.log('here');
-          thisel.find('button.x').remove();
-          thisel.find('div.essay-content').remove();
-          thisel.removeClass('expanded-name-pane');
-          thisel.addClass('collapsed-name-pane');
-          thisel.on('click', nameClickHandler);
-        });
+        if (e.target.className !== "x") {
+          $(this).off('click')
+          $(this).removeClass('collapsed-name-pane')
+          $(this).addClass('expanded-name-pane');
+          var streamScrollTop = $('.stream').scrollTop();
+          $('.stream').animate({
+            "scrollTop": streamScrollTop + $(this).offset().top - 44
+          }, 500);
+          var d = d3.select(this).datum();
+          d3.select(this).append('div').attr('class', 'essay-content').html(d.essay)
+          d3.select(this).append('button').attr('class', 'x');
+          d3.select(this).select('div.essay-content').classed('show', true);
+          var thisel = $(this);
+          $(this).find('button.x').on('click', function (e) {
+            console.log('xbuttonclickhandler called');
+            thisel.find('button.x').remove();
+            thisel.find('div.essay-content').remove();
+            thisel.removeClass('expanded-name-pane');
+            thisel.addClass('collapsed-name-pane');
+            thisel.on('click', nameClickHandler);
+          });          
+        }
       };
 
       $('.clickable-name').on('click', nameClickHandler);
