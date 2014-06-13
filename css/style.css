@@ -128,7 +128,7 @@ header.primary-header {
     height: 100%;
     z-index: 2; }
     .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
+      background-image: -webkit-linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 50%, black 100%);
       background-size: 100% 100%;
       opacity: .1;
       pointer-events: none;
@@ -297,10 +297,10 @@ header.primary-header {
       width: auto;
       height: 44px; }
       .stream-wrapper footer.stream-footer ul li {
-        color: black;
+        color: white;
         display: block;
         float: left;
-        font-family: "Source Sans Pro Black";
+        font-family: "Source Sans Pro Extra Light";
         font-size: 22px;
         line-height: 44px;
         list-style: none;
@@ -310,14 +310,37 @@ header.primary-header {
       bottom: -44px; }
 
 .inspector {
-  width: 250px;
+  position: absolute;
+  width: 200px;
   height: 44px; }
   .inspector li {
+    color: white;
     font-size: 13px;
     line-height: 22px;
-    font-family: "Source Sans Pro Black";
+    font-family: "Source Sans Pro Extra Light";
     font-weight: 400;
     list-style: none;
     text-align: center;
     text-transform: uppercase;
+    height: 22px; }
+
+table.key {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 222px; }
+  table.key tr {
+    height: 22px; }
+  table.key td.colorblock {
+    padding-left: 0;
+    width: 22px;
+    height: 22px; }
+  table.key td {
+    color: white;
+    font-family: "Source Sans Pro Extra Light";
+    font-size: 11px;
+    line-height: 22px;
+    padding-left: 22px;
+    text-transform: uppercase;
+    width: 178px;
     height: 22px; }

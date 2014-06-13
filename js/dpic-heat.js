@@ -31,11 +31,42 @@ DAB.ModernExecutionsMapInteractive = function (el) {
     } else {
       return colorScale(4);
     }
-  }
+  };
 
+  var createKey = function () {
+    el.append(
+      '<table class="key">' +
+        '<tr>' +
+          '<td class="colorblock"></td>' +
+          '<td>0 executions</td>' +
+        '</tr>' +
+        '<tr>' +
+          '<td class="colorblock"></td>' +
+          '<td>1 execution</td>' +
+        '</tr>' +
+        '<tr>' +
+          '<td class="colorblock"></td>' +
+          '<td>2 to 10 executions</td>' +
+        '</tr>' +
+        '<tr>' +
+          '<td class="colorblock"></td>' +
+          '<td>11 to 49 executions</td>' +
+        '</tr>' +
+        '<tr>' +
+          '<td class="colorblock"></td>' +
+          '<td>50 or more executions</td>' +
+        '</tr>' +
+      '</table>'
+    );
+    var table = el.find('table.key');
+    for (var i = 0; i < table.find('td.colorblock').length; i++) {
+      table.find('td.colorblock').eq(i).css('background-color', colorScale(i));
+    }
+  };
 
   this.build = function () {
 
+    createKey();
 
     el.append('<h1 class="graph-title">Modern Executions by County</h1>');
 
@@ -97,8 +128,6 @@ DAB.ModernExecutionsMapInteractive = function (el) {
             }
             var inspector = el.find('.inspector');
             inspector.css({
-              'background-color': 'rgb(255,255,255)',
-              'position': 'absolute',
               'top': e.clientY - el.offset().top - 100,
               'left': e.clientX - el.offset().left - (inspector.width() / 2)
             })
