@@ -44,7 +44,7 @@ DAB.ModernExecutionsInteractive = function (el) {
     "white": "white",
     "black": "black",
     "latino": "latino",
-    "native american"; "native american",
+    "native american": "native american",
     "asian": "asian",
     "other": "other",
     "lethal injection": "lethal injection",
