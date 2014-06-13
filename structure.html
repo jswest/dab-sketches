@@ -1,0 +1,279 @@
+<!--
+TOP LEVEL ELEMENTS
+div.modals
+  div.share-modal
+    button.x
+    nav.share-nav
+  article.about
+    button.x
+    div.guts
+header.primary-header
+  h1.primary-header-title
+  nav.priamry-header-nav
+div.stream-wrapper
+  nav.minimap
+    svg.background-area-graph
+    ol.minimap-list
+  div.stream
+  footer.stream-footer
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Damnatio ad Bestias</title>
+  </head>
+  <body>
+
+  
+    <!--
+    div.modals
+    this contains all the top-level modals
+    -->
+    <div class="modals">
+      <!--
+      div.share-modal
+      a modal overlay that encourages sharing
+      size: tbd; position: tbd.
+      -->
+      <div class="share-modal">
+        <button class="x"></button>
+        <nav class="share-nav">
+          <button class="twitter"></button>
+          <button class="facebook"></button>
+        </nav>
+      </div>
+
+      <!--
+      article.about
+      the about page is a deep-linkable modal display that includes bios and the colophon.
+      -->
+      <article class="about">
+        <button class="x"></button>
+        <div class="guts">
+          <section>
+            <h1>this project</h1>
+            <p></p>
+          <section>
+            <h1>karim hajj</h1>
+            <p></p>
+          </section>
+          <!-- ... -->
+          <section>
+            <h1>colophon</h1>
+            <p></p>
+          </section>
+        </div>
+      </article>
+    </div>
+
+
+
+    <!--
+    header.primary-header
+    this contains the header nav and project branding.
+    -->
+    <header class="primary-header">
+      
+      <!--
+      h1.primary-header-title
+      this is the branding for the project.
+      -->
+      <h1 class="primary-header-title">Damnatio ad Bestias</h1>
+
+      <!--
+      nav.primary-header-nav
+      this exists to drive users to share and learn more about the project.
+      -->
+      <nav class="primary-header-nav">
+        <button class="share-button nav-button">share</button>
+        <button class="about-button nav-button">about</button>
+      </nav>
+
+    </header>
+
+
+
+    <!--
+    div.stream-wrapper
+    wraps the stream-based content, which includes both panes, names, and minimap.
+    -->
+    <div class="stream-wrapper">
+
+      <!--
+      nav.minimap
+      the minimap contains a list of years and interludes.
+      it also includes a visualization of executions over time
+      -->
+      <nav class="minimap">
+        
+        <!--
+        svg.background-area-graph
+        this contains a d3 generated area graph of executions over time.
+        -->
+        <svg class="background-area-graph"></svg>
+
+        <!--
+        ol.minimap-list
+        this is, in essence, the tablet of contents for the project.
+        it contains an ordered list of every year and interlude.
+        -->
+        <ol class="minimap-list">
+          
+          <!--
+          li.minimap-year ||
+          li.minimap-interlude
+          each entry is either a year or an interlude, and, on click, takes you to the appropriate place in the stream. 
+          -->
+          <li class="minimap-year">
+            <a href="/year/1977">1977</a>
+          </li>
+          <li class="minimap-interlude">
+            <a href="/interludes/0/methods">methods of execution</a>
+          </li>
+        </ol>
+      </nav>
+
+      <!--
+      div.stream
+      the stream is where the magic happens.
+      -->
+      <div class="stream">
+
+        <!--
+        div.last-words-wrapper
+        this is a hook for styling and javascript that shows the last words of a given person.
+        -->
+        <div class="last-words-wrapper"></div>
+
+        <!--
+        div.blur.blur-top &&
+        div.blur.blur-bottom
+        (not really a blur, but a boy can dream.)
+        it is actaully two absolutely positioned graidents that go from background color to transparent
+        such that the text in the middle of the screen is "highlighted".
+        it is used primarily for name panes and narration panes. it is hidden when the interludes come in.
+        -->
+        <div class="blur blur-top"></div>
+        <div class="blur blur-bottom"></div>
+
+        <!--
+        section.pane.narration           ||
+        article.pane.interactive         || 
+        article.pane.essay               ||
+        article.pane.name.clickable-name ||
+        section.pane.name.static-name    ||
+        div.year-marker
+        panes are the items that live in the stream, and they are the primary unit of content.
+        here are the different kinds of panes:
+        (1) narration panes (section elements)
+            i.e. the pane that holds the title and byline or the pane that holds the project discription and how to navigate.
+            these generally take up the full width and height of the window.
+            they have h1, h2, or p tags that contain, at most, a few sentences of content.
+        (2) interactive panes (article elements)
+            i.e. the exeuctions by county heatmap or the word cloud of last words.
+            these generally take up the full width and height of the window.
+            they contain interactive visualizations of data.
+            they are meant to stand alone and should be deep-linkable.
+        (3) essay panes (article elements)
+            i.e. the colophon, the about section. the interlude on botched executions.
+            these can take up more than the full height of the window.
+            they contain short essays.
+            they are meant to stand alone and should be deep-linkable.
+        (4) clickable name panes (article elements)
+            i.e. gary gilmore's name and article
+            these have two states
+            (A) expanded
+                can be given the class essay or interactive and then turn into one of those or a hybrid of them.
+                in this state, these should be stand-alone and deep-linkable.
+            (B) collapsed
+                in every way the same as (5) (below) but on click turns into mode (4A).
+                in this state, neither stand-alone nor deep-linkable
+                (it should be given the <article> element nonetheless, as it is stand-alone in its truest form)
+        (5) static name panes (section elements)
+            i.e. john smith's name
+            these show only a name.
+            when a name is in the center position, it shows the race, crime, and method of execution for that person in-line.
+            if there are last words associated with it, those appear in div.last-words-wrapper.
+        panes also have the id element that is the unique name for each pane. each id is namespaced with `pane-`.
+        the year marker elements are not displayed; they are hooks for javascript so that we can deep-link to a specific year.
+        they have the id element that is unique for each year. they begin `year-marker-`.
+        -->
+        <section class="pane narration" id="pane-narration-0">
+          <h1 class="project-title">Damnatio ad Bestias</h1>
+          <h2 class="byline">By Karim Hajj, Gabe Isman, and John West</h2>
+          <button class="down-arrow"></button>
+        </section>
+        
+        <section class="pane narration" id="pane-narration-1">
+          <p>In 1974, the Supreme Court ruled that capital punishment was not unconstitutional, and the death penalty, which had been paused for a decade, was implemented again in a 26 states.</p>
+        </section>
+        
+        <section class="pane narration" id="pane-narration-2">
+          <p>The following names are the names of every person who has been executed since that Supreme Court ruling. As you scroll, you can select bolded names to learn more about that person.</p>
+        </section>
+
+        <!-- scrolling to this location maps to the url /years/1977 -->
+        <div class="year-marker" id="year-marker-1977"></div>
+        
+        <!-- clicking on this location maps to the url /names/gary-gilmore/ -->
+        <article class="pane name clickable-name collapsed" id="pane-gary-gilmore-1977"> 
+          <h1 class="name">gary gilmore</h1>
+          <ul class="dpic-data">
+            <li class="date"></li>
+            <li class="age"></li>
+            <li class="location"></li>
+            <li class="method"></li>
+            <li class="race"></li>
+            <li class="victims"></li>            
+          </ul>
+          <div class="essay-content">
+            <!-- a short essay about gary gilmore goes here -->
+          </div>
+        </article>
+
+        <section class="pane name static-name" id="pane-john-smith-1977">
+          <h1 class="name">john smith</h1>
+          <ul class="dpic-data">
+            <li class="date"></li>
+            <li class="age"></li>
+            <li class="location"></li>
+            <li class="method"></li>
+            <li class="race"></li>
+            <li class="victims"></li>
+          </ul>
+        </section>
+
+        <!-- scrolling to this location maps to the url /interludes/0/county -->
+        <article class="pane interactive interlude" id="pane-interlude-county">
+          <h1 class="interactive-title">executions by county</h1>
+          <p class="mini-essay"></p>
+          <div class="controls"></div>
+          <div class="key"></div>
+          <svg></svg>
+        </article>
+        <!-- ... -->
+
+        <!-- scrolling to this location maps to the url /essays/0/acknowledgements -->
+        <article class="pane essay" id="pane-essay-acknowledgments">
+          <h1 class="essay-title">acknowledgements</h1>
+          <div class="essay-content">
+            <p></p>
+          </div>
+        </article>
+
+      </div>
+
+      <!--
+      footer.stream-footer
+      seo whoring for fun and profit
+      -->
+      <footer class="stream-footer">
+        <!-- ??? -->
+      </footer>
+
+    </div>
+
+
+
+  </body>
+</html>

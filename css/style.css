@@ -1,0 +1,323 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html,
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%; }
+
+body {
+  background-color: #231f20; }
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #8c7c80;
+  font-family: "Source Sans Pro Black";
+  font-weight: 400; }
+
+p {
+  color: white;
+  font-family: "PT Serif";
+  font-size: 15px;
+  line-height: 33px;
+  margin-bottom: 33px; }
+
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  display: block;
+  font-family: "Source Sans Pro Extra Light"; }
+
+.x {
+  background-image: url("../images/big-x.png");
+  cursor: pointer;
+  position: absolute;
+  top: 88px;
+  right: 44px;
+  width: 100px;
+  height: 100px; }
+
+.modals {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2; }
+  .modals.show {
+    display: block; }
+  .modals article.about {
+    background-color: #231f20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .modals article.about .about-guts {
+      overflow-y: auto;
+      width: 100%;
+      height: 100%; }
+      .modals article.about .about-guts section {
+        margin-top: 44px;
+        margin-left: 44px;
+        width: 600px; }
+        .modals article.about .about-guts section:first-child {
+          margin-top: 88px; }
+        .modals article.about .about-guts section:last-child {
+          margin-bottom: 44px; }
+        .modals article.about .about-guts section h1 {
+          font-size: 44px;
+          letter-spacing: 2.2px;
+          text-transform: uppercase; }
+    .modals article.about.hide {
+      display: none; }
+
+header.primary-header {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  z-index: 3; }
+  header.primary-header h1 {
+    color: #8c7c80;
+    font-size: 22px;
+    line-height: 44px;
+    padding-left: 44px;
+    text-transform: uppercase; }
+  header.primary-header nav {
+    position: absolute;
+    top: 0;
+    right: 44px;
+    width: 200px; }
+    header.primary-header nav button {
+      color: #8c7c80;
+      float: right;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      margin-left: 22px;
+      margin-top: 11px;
+      text-transform: uppercase;
+      height: 22px;
+      -webkit-transition: opacity 0.5s;
+      transition: opacity 0.5s; }
+      header.primary-header nav button.discourage {
+        opacity: .5; }
+
+.stream-wrapper {
+  overflow: hidden;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* height changed in js */ }
+  .stream-wrapper .stream-modals {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; }
+    .stream-wrapper .stream-modals .blur {
+      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
+      background-size: 100% 100%;
+      opacity: .1;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+  .stream-wrapper nav.minimap {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: -200px;
+    width: 222px;
+    height: 100%;
+    z-index: 3;
+    -webkit-transition: all 500ms;
+    transition: all 500ms; }
+    .stream-wrapper nav.minimap .minimap-background-color {
+      background-color: #8c7c80;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      -webkit-transition: opacity 500ms;
+      transition: opacity 500ms; }
+    .stream-wrapper nav.minimap ol {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2; }
+    .stream-wrapper nav.minimap:hover {
+      right: 0; }
+      .stream-wrapper nav.minimap:hover .minimap-background-color {
+        opacity: 1; }
+  .stream-wrapper .stream {
+    overflow: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; }
+    .stream-wrapper .stream .pane {
+      width: 100%;
+      height: 100%; }
+      .stream-wrapper .stream .pane.narration h1 {
+        font-size: 88px;
+        line-height: 88px;
+        margin-left: 44px;
+        margin-top: -176px;
+        position: absolute;
+        top: 50%;
+        height: 88px;
+        text-transform: uppercase; }
+      .stream-wrapper .stream .pane.narration h2 {
+        color: #463e40;
+        font-size: 22px;
+        line-height: 22px;
+        margin-top: 88px;
+        margin-left: 44px;
+        position: absolute;
+        top: 50%;
+        height: 22px;
+        text-transform: uppercase; }
+      .stream-wrapper .stream .pane.narration p {
+        color: #8c7c80;
+        font-family: "Source Sans Pro Black";
+        font-size: 33px;
+        line-height: 44px;
+        margin-top: 200px;
+        margin-left: 44px;
+        width: 800px; }
+      .stream-wrapper .stream .pane.interactive {
+        position: relative; }
+        .stream-wrapper .stream .pane.interactive h1 {
+          font-size: 44px;
+          text-transform: uppercase;
+          position: absolute;
+          top: 44px;
+          left: 44px; }
+        .stream-wrapper .stream .pane.interactive ul.controls {
+          background-color: #463e40;
+          cursor: pointer;
+          overflow: hidden;
+          position: absolute;
+          top: 44px;
+          right: 44px;
+          width: 264px;
+          height: 22px; }
+          .stream-wrapper .stream .pane.interactive ul.controls li {
+            color: white;
+            display: block;
+            font-family: "Source Sans Pro Extra Light";
+            font-size: 14.66667px;
+            line-height: 22px;
+            list-style: none;
+            padding-left: 22px;
+            text-transform: uppercase;
+            height: 22px; }
+            .stream-wrapper .stream .pane.interactive ul.controls li .current-sort-key {
+              font-family: "Source Sans Pro Black"; }
+          .stream-wrapper .stream .pane.interactive ul.controls.clicked {
+            height: auto; }
+        .stream-wrapper .stream .pane.interactive svg path {
+          stroke: #231f20;
+          stroke-width: 0.25px; }
+      .stream-wrapper .stream .pane.name-pane {
+        height: 44px;
+        width: 100%; }
+        .stream-wrapper .stream .pane.name-pane h1 {
+          color: #463e40;
+          cursor: pointer;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: 44px;
+          margin-left: 44px;
+          margin-right: 44px;
+          text-transform: uppercase;
+          height: 44px; }
+        .stream-wrapper .stream .pane.name-pane ul {
+          display: none;
+          width: auto;
+          height: 44px; }
+          .stream-wrapper .stream .pane.name-pane ul li {
+            color: #463e40;
+            display: block;
+            float: left;
+            font-family: "Source Sans Pro Black";
+            line-height: 44px;
+            list-style: none;
+            margin-left: 44px; }
+        .stream-wrapper .stream .pane.name-pane.clickable-name h1 {
+          font-family: "Source Sans Pro Black"; }
+        .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane {
+          overflow-y: scroll;
+          height: auto; }
+          .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane .essay-content {
+            margin-left: 44px;
+            margin-top: 44px;
+            opacity: 0;
+            width: 600px;
+            -webkit-transition: all 500ms;
+            transition: all 500ms; }
+            .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane .essay-content.show {
+              opacity: 1; }
+        .stream-wrapper .stream .pane.name-pane:hover h1 {
+          color: #8c7c80; }
+        .stream-wrapper .stream .pane.name-pane:hover ul {
+          display: block; }
+  .stream-wrapper footer.stream-footer {
+    background-color: #463e40;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    z-index: 2;
+    -webkit-transition: all 500ms;
+    transition: all 500ms; }
+    .stream-wrapper footer.stream-footer ul {
+      display: none;
+      width: auto;
+      height: 44px; }
+      .stream-wrapper footer.stream-footer ul li {
+        color: black;
+        display: block;
+        float: left;
+        font-family: "Source Sans Pro Black";
+        font-size: 22px;
+        line-height: 44px;
+        list-style: none;
+        margin-left: 44px;
+        text-transform: uppercase; }
+    .stream-wrapper footer.stream-footer.hidden {
+      bottom: -44px; }
+
+.inspector {
+  width: 250px;
+  height: 44px; }
+  .inspector li {
+    font-size: 13px;
+    line-height: 22px;
+    font-family: "Source Sans Pro Black";
+    font-weight: 400;
+    list-style: none;
+    text-align: center;
+    text-transform: uppercase;
+    height: 22px; }

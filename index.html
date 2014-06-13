@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Damnatio ad Bestias</title>
+    <link rel="stylesheet" href="css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+  </head>
+  <body>
+
+    <div class="modals">
+      <div class="share-modal">
+        <nav class="share-nav">
+          <button class="twitter"></button>
+          <button class="facebook"></button>
+        </nav>
+      </div>
+      <article class="about hide">
+        <button class="x"></button>
+        <div class="about-guts">
+        </div>
+      </article>
+    </div>
+
+    <header class="primary-header">
+      <h1 class="primary-header-title">Damnatio ad Bestias</h1>
+      <nav class="primary-header-nav">
+        <button class="share-button nav-button">share</button>
+        <button class="about-button nav-button">about</button>
+      </nav>
+    </header>
+
+    <div class="stream-wrapper">
+
+      <!--<div class="stream-modals">
+        <div class="last-words-wrapper"></div>
+        <div class="blur blur-top"></div>
+        <div class="blur blur-bottom"></div>
+      </div>-->
+
+      <nav class="minimap">
+        <div class="minimap-background-color"></div>
+        <svg class="background-area-graph"></svg>
+        <ol class="minimap-list">
+        </ol>
+      </nav>
+
+      <div class="stream">
+        <section class="pane narration" id="pane-narration-0">
+          <h1 class="project-title">Damnatio ad Bestias</h1>
+          <h2 class="byline">By Karim Hajj, Gabe Isman, and John West</h2>
+          <button class="down-arrow"></button>
+        </section>
+        <section class="pane narration" id="pane-narration-1">
+          <p>In 1974, the Supreme Court ruled that capital punishment was not unconstitutional, and the death penalty, which had been paused for a decade, was implemented again in a 26 states.</p>
+        </section>
+        <section class="pane narration" id="pane-narration-2">
+          <p>The following names are the names of every person who has been executed since that Supreme Court ruling. As you scroll, you can select bolded names to learn more about that person.</p>
+        </section>
+      </div>
+
+      <footer class="stream-footer hidden">
+        <ul>
+          <li class="name-date"></li>
+          <li class="name-method"></li>
+          <li class="name-race"></li>
+          <li class="name-age"></li>
+          <li class="name-state"></li>
+          <li class="name-victims"></li>
+        </ul>
+      </footer>
+
+    </div>
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/d3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dpic.js"></script>
+    <script src="js/dpic-heat.js"></script>
+    <script>
+$(document).ready(function () {
+
+
+  var layout = function () {
+    var realWindowHeight = $(window).height() - $('header.primary-header').height();
+    $('.stream-wrapper').css('height', realWindowHeight);
+    $('.pane').css('height', realWindowHeight);    
+  };
+  var bind = function () {
+    var headerAboutButtonClickHandler = function (e) {
+      $('.modals').addClass('show');
+      $('article.about').removeClass('hide');
+      $(this).addClass('discourage');
+    };
+    var aboutXButtonClickHandler = function (e) {
+      $('.modals').removeClass('show');
+      $('article.about').addClass('hide');
+      $('button.about-button').removeClass('discourage');
+    }
+    $('button.about-button').on('click', headerAboutButtonClickHandler);
+    $('article.about .x').on( 'click', aboutXButtonClickHandler);    
+
+    $('.stream').on('scroll', function (e) {
+      if ($('#interlude-0').offset().top - $(window).height() <= 0) {
+        if (!$('#interlude-0').data('loaded')) {
+          $('#interlude-0').data('loaded', 'true');
+          var executions = new DAB.ModernExecutionsInteractive($('#interlude-0'));
+          executions.build();
+        }        
+      }
+      if ($('#interlude-1').offset().top - $(window).height() <= 0) {
+        if (!$('#interlude-1').data('loaded')) {
+          $('#interlude-1').data('loaded', 'true');
+          var map = new DAB.ModernExecutionsMapInteractive($('#interlude-1'));
+          map.build();
+        }
+      }
+    });
+
+  };
+
+  layout();
+  bind();
+  $(window).on('resize', layout);
+
+  var namelist = new DAB.NameList();
+
+
+
+
+
+
+  d3.json('data/about.json', function (data) {
+    var sections = d3.select('.about-guts')
+      .selectAll('section')
+      .data(data)
+      .enter()
+      .append('section')
+    sections
+      .append('h1')
+      .text(function (d) {
+        return d.title;
+      });
+    sections
+      .append('div').attr('class', 'section-content')
+      .html(function (d) {
+        return d.body;
+      });
+  });
+
+
+
+});
+    </script>
+  </body>
+</html>
