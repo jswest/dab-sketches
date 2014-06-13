@@ -45,7 +45,7 @@ DAB.NameList = function () {
 
 
     d3.json('data/panes.json', function (data) {
-      panes.each( function(i) {
+      panes.each(function (i) {
         var d = d3.select(this).datum();
         d3.select(this).attr('data-name', d.name.split(' ').join('-'));
       });
@@ -54,6 +54,33 @@ DAB.NameList = function () {
         thisNode.addClass('clickable-name');
         d3.select(thisNode[0]).datum().essay = data[j].essay;
       }
+
+      var minimap = $('.minimap ol');
+      var currentYear = 0;
+      var names = [];
+      for (var j = 0; j < data.length; j++) {
+        names.push(data[j].name);
+      }
+      panes.each(function (d, i) {
+        var year = new Date(d.date).getFullYear();
+        if (year > currentYear) {
+          currentYear = year;
+          minimap.append('<li class="minimap-year">' + year + '</li>');
+        }
+        if (names.indexOf(d.name) > -1) {
+          minimap.append('<li class="minimap-name">' + d.name + '</li>');
+        }
+      });
+      $('li.minimap-year').eq(5).before(
+        '<li class="minimap-interlude">' + 
+          'The Narrow Practice of Capital Punishment' +
+        '</li>'
+      );
+      $('li.minimap-year').eq(10).before(
+        '<li class="minimap-interlude">' + 
+          'The State of Modern Capital Punishment' +
+        '</li>'
+      );
 
       var nameClickHandler = function (e) {
         if (e.target.className !== "x") {

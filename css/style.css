@@ -130,7 +130,7 @@ header.primary-header {
     height: 100%;
     z-index: 2; }
     .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
+      background-image: -webkit-linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 50%, black 100%);
       background-size: 100% 100%;
       opacity: .1;
       pointer-events: none;
@@ -161,10 +161,31 @@ header.primary-header {
       -webkit-transition: opacity 500ms;
       transition: opacity 500ms; }
     .stream-wrapper nav.minimap ol {
-      position: absolute;
+      overflow: scroll;
+      padding-top: 44px;
+      position: relative;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: 2; }
+      .stream-wrapper nav.minimap ol li {
+        color: white;
+        font-family: "Source Sans Pro Black";
+        font-size: 11px;
+        list-style: none;
+        line-height: 11px;
+        margin-left: 22px;
+        margin-bottom: 11px;
+        text-transform: uppercase; }
+        .stream-wrapper nav.minimap ol li.minimap-interlude {
+          color: #00aeef; }
+        .stream-wrapper nav.minimap ol li.minimap-year {
+          color: #231f20;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: 11px;
+          margin-top: 11px;
+          text-align: center; }
     .stream-wrapper nav.minimap:hover {
       right: 0; }
       .stream-wrapper nav.minimap:hover .minimap-background-color {
