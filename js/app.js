@@ -14,6 +14,14 @@ DAB.NameList = function () {
       .text(function (d) {
         return d.name
       });
+    var currentYear = 0;
+    panes.each(function (d, i) {
+      var year = new Date(d.date).getFullYear();
+      if (year > currentYear) {
+        currentYear = year;
+        $(this).before('<div class="year-marker"><h1>' + year + '</h1></div>')
+      }
+    })
     d3.selectAll('.collapsed-name-pane').on('mouseover', function (d, i) {
       if ($('footer.stream-footer').hasClass('hidden')) {
         $('footer.stream-footer').removeClass('hidden');
@@ -32,8 +40,8 @@ DAB.NameList = function () {
       }
     });
   
-    $('.name-pane').eq(0).before('<article class="pane interactive interlude" id="interlude-1"></article>');
-    $('.name-pane').eq(100).before('<article class="pane interactive interlude" id="interlude-0"></article>');
+    $('.year-marker').eq(0).before('<article class="pane interactive interlude" id="interlude-1"></article>');
+    $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-0"></article>');
 
 
     d3.json('data/panes.json', function (data) {

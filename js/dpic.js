@@ -19,7 +19,8 @@ DAB.ModernExecutionsInteractive = function (el) {
   };
 
   var createTitle = function () {
-    el.append('<h1 class="interactive-title">Modern Executions</h1>');
+    el.append('<h3 class="interlude-kicker">Interlude</h3>');
+    el.append('<h1 class="interlude-title">Modern Executions</h1>');
   }
 
   var sort = function (data, sortKey) {

@@ -215,6 +215,14 @@ header.primary-header {
     width: 100%;
     height: 100%;
     z-index: 1;
+    .year-marker {
+      margin-bottom: 22px;
+      margin-top: 88px;
+      h1 {
+        color: $color2;
+        margin-left: 44px;
+      }
+    }
     .pane {
       width: 100%;
       height: 100%;
@@ -251,12 +259,28 @@ header.primary-header {
         }
       }
       &.interactive {
+        margin-top: $headerheight * 2;
         position: relative;
-        h1 {
+        height: calc(44px + 100%);
+        svg {
+          position: relative;
+          top: 44px;
+        }
+        h3.interlude-kicker {
+          color: $color5;
+          font-family: "Source Sans Pro Black";
+          font-size: $headerheight / 4;
+          letter-spacing: 2px;
+          position: absolute;
+          top: 0;
+          left: $headerheight * (3/2);
+          text-transform: uppercase;
+        }
+        h1.interlude-title {
           font-size: $headerheight;
           text-transform: uppercase;
           position: absolute;
-          top: $headerheight;
+          top: $headerheight / 2;
           left: $headerheight;
         }
         ul.controls {
@@ -404,6 +428,7 @@ table.key {
   top: 44px;
   right: 0;
   width: 222px;
+  z-index: 2;
   tr {
     height: 22px;
   }
