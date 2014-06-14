@@ -79,9 +79,6 @@
     <script>
 $(document).ready(function () {
 
-
-  var layout = function () {
-  };
   var bind = function () {
     var headerAboutButtonClickHandler = function (e) {
       $('.modals').addClass('show');
@@ -112,13 +109,15 @@ $(document).ready(function () {
         }
       }
     });
-
   };
 
-  layout();
-  bind();
-  $(window).on('resize', layout);
+  $('.minimap').addClass('faux-hover');
+  var minimapTimer = setTimeout(function () {
+    $('.minimap').removeClass('faux-hover');
+  }, 2000 );
 
+  bind();
+  
   var namelist = new DAB.NameList();
 
 
