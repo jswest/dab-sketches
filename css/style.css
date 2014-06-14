@@ -298,8 +298,8 @@ header.primary-header {
         .stream-wrapper .stream .pane.interactive svg path.state {
           fill: transparent;
           pointer-events: none;
-          stroke: black;
-          stroke-width: 0.5px; }
+          stroke: #231f20;
+          stroke-width: 1px; }
       .stream-wrapper .stream .pane.name-pane {
         height: 44px;
         width: 100%; }
