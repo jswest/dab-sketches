@@ -178,14 +178,14 @@ header.primary-header {
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: -200px;
-    width: 222px;
+    right: -100px;
+    width: 122px;
     height: 100%;
     z-index: 3;
     -webkit-transition: all 500ms;
     transition: all 500ms;
     .minimap-background-color {
-      background-color: $color6;
+      background-color: rgba(0,0,0,.5);
       opacity: 0;
       position: absolute;
       top: 0;
@@ -218,7 +218,7 @@ header.primary-header {
           color: $color5;
         }
         &.minimap-year {
-          color: $color1;
+          color: $color4;
           font-family: "Source Sans Pro Extra Light";
           font-size: 11px;
           margin-top: 11px;
@@ -226,7 +226,8 @@ header.primary-header {
         }
       }
     }
-    &:hover {
+    &:hover,
+    &.faux-hover {
       right: 0;
       .minimap-background-color {
         opacity: 1;
