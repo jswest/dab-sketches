@@ -258,9 +258,17 @@ header.primary-header {
           position: absolute;
           top: 22px;
           left: 44px; }
+        .stream-wrapper .stream .pane.interactive h2.interlude-subtitle {
+          color: #463e40;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: 22px;
+          text-transform: uppercase;
+          position: absolute;
+          top: 66px;
+          left: 44px; }
         .stream-wrapper .stream .pane.interactive ul.controls {
           position: absolute;
-          top: 88px;
+          top: 110px;
           left: 44px;
           width: 264px;
           z-index: 2; }

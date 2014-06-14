@@ -311,9 +311,18 @@ header.primary-header {
           top: $headerheight / 2;
           left: $headerheight;
         }
+        h2.interlude-subtitle {
+          color: $color2;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: $headerheight / 2;
+          text-transform: uppercase;
+          position: absolute;
+          top: $headerheight * (3/2);
+          left: $headerheight;
+        }
         ul.controls {
           position: absolute;
-          top: $headerheight * 2;
+          top: ($headerheight * 2) + ($headerheight / 2);
           left: $headerheight;
           width: $headerheight * 6;
           z-index: 2;

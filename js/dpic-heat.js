@@ -68,7 +68,8 @@ DAB.ModernExecutionsMapInteractive = function (el) {
     createKey();
 
     el.append('<h3 class="interlude-kicker">Interlude</h3>');
-    el.append('<h1 class="interlude-title">Map of Executions by County, 1977 to present</h1>');
+    el.append('<h1 class="interlude-title">The Narrow Practice of Capital Punishment</h1>');
+    el.append('<h2 class="interlude-subtitle">Executions 1977 to Present</h2>');
 
     d3.json("data/us.repaired.topo.json", function (error, topology) {
       if (error) {
