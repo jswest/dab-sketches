@@ -81,6 +81,13 @@ DAB.NameList = function () {
           'The State of Modern Capital Punishment' +
         '</li>'
       );
+      
+      $('.minimap').addClass('faux-hover');
+      var minimapTimer = setTimeout(function () {
+        $('.minimap').removeClass('faux-hover');
+      }, 2000 );
+
+
 
       var nameClickHandler = function (e) {
         if (e.target.className !== "x") {
@@ -107,6 +114,7 @@ DAB.NameList = function () {
         }
       };
 
+    
       $('.clickable-name').on('click', nameClickHandler);
     });
   });
