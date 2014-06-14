@@ -292,9 +292,14 @@ header.primary-header {
               font-family: "Source Sans Pro Black"; }
           .stream-wrapper .stream .pane.interactive ul.controls.clicked {
             height: auto; }
-        .stream-wrapper .stream .pane.interactive svg path {
+        .stream-wrapper .stream .pane.interactive svg path.county {
           stroke: #231f20;
           stroke-width: 0.25px; }
+        .stream-wrapper .stream .pane.interactive svg path.state {
+          fill: transparent;
+          pointer-events: none;
+          stroke: black;
+          stroke-width: 0.5px; }
       .stream-wrapper .stream .pane.name-pane {
         height: 44px;
         width: 100%; }

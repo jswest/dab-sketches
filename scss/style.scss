@@ -352,9 +352,15 @@ header.primary-header {
           }
         }
         svg {
-          path {
+          path.county {
             stroke: $color1;
             stroke-width: 0.25px;
+          }
+          path.state {
+            fill: transparent;
+            pointer-events: none;
+            stroke: $color3;
+            stroke-width: 0.5px;
           }
         }
       }

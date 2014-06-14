@@ -87,7 +87,8 @@ DAB.ModernExecutionsMapInteractive = function (el) {
       var svg = d3.select(el[0]).append('svg')
         .attr('width', el.width())
         .attr('height', el.height());
-      svg.selectAll("path")
+      svg.append('g').attr('class', 'counties')
+        .selectAll("path.county")
         .data(topojson.feature(topology, topology.objects.counties).features)
         .enter()
         .append("path")
@@ -100,12 +101,23 @@ DAB.ModernExecutionsMapInteractive = function (el) {
             return 'executioner';
           }
         })
+        .classed("county", true)
         .style('fill', function (d) {
           if ( d.state === 'ak' || d.name === 'ak' || d.state === 'hi' || d.name === 'hi' ) {
             return "none";
           }
           return getRange(d.properties.count);
+        });
+      svg.append('g').attr('class', 'states')
+        .selectAll('path.state')
+        .data(topojson.feature(topology, topology.objects.states).features)
+        .enter()
+        .append('path')
+        .attr('d', path)
+        .attr('id', function (d) {
+          return 'fips-' + d.id;
         })
+        .classed('state', true);
       $('.executioner')
         .css('cursor', 'pointer')
         .on('mouseover', function (e) {
