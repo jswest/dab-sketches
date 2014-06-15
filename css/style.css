@@ -131,7 +131,7 @@ header.primary-header {
     height: 100%;
     z-index: 2; }
     .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 50%, black 100%);
+      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
       background-size: 100% 100%;
       opacity: .1;
       pointer-events: none;
@@ -316,6 +316,16 @@ header.primary-header {
             .stream-wrapper .stream .pane.interactive .words-overlay .words p {
               color: #231f20;
               width: 100%; }
+        .stream-wrapper .stream .pane.interactive svg rect {
+          cursor: pointer; }
+        .stream-wrapper .stream .pane.interactive svg .x-axis path.domain {
+          fill: none;
+          stroke: none; }
+        .stream-wrapper .stream .pane.interactive svg .x-axis text {
+          fill: white;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: 11px;
+          text-anchor: beginning; }
         .stream-wrapper .stream .pane.interactive svg path.county {
           stroke: #231f20;
           stroke-width: 0.25px; }
@@ -433,6 +443,11 @@ header.primary-header {
     .stream-wrapper footer.stream-footer.hidden {
       bottom: -44px; }
 
+table.inspector {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 11px;
+  width: auto; }
+
 .inspector {
   position: absolute;
   width: 200px;
@@ -447,6 +462,20 @@ header.primary-header {
     text-align: center;
     text-transform: uppercase;
     height: 22px; }
+  .inspector th,
+  .inspector td {
+    color: white;
+    float: left;
+    font-size: 13px;
+    line-height: 22px;
+    text-transform: uppercase;
+    height: 22px; }
+  .inspector th {
+    font-family: "Source Sans Pro Extra Light";
+    padding-right: 5px; }
+  .inspector td {
+    font-family: "Source Sans Pro Black";
+    padding-left: 5px; }
 
 table.key {
   position: absolute;

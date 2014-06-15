@@ -58,10 +58,32 @@ DAB.ModernExecutionsInteractive = function (el) {
     "n": "northeast",
     "m": "midwest"
   };
+  var keynames = {
+    "race": [
+      "white",
+      "black",
+      "latino",
+      "native american",
+      "asian",
+      "other"
+    ],
+    "method": [
+      "lethal injection",
+      "electrocution",
+      "gas chamber",
+      "firing squad",
+      "hanging",
+      "other"
+    ],
+    "region": [
+      "s",
+      "w",
+      "m",
+      "n"
+    ]
+  };
 
   var sort = function (data, sortKey) {
-    console.log( data[0][sortKey] );
-    console.log(colorIndex[data[0][sortKey]]);
     return data.sort(function (a, b) {
       return colorIndex[a[sortKey]] > colorIndex[b[sortKey]] ? 1 : -1
     });
@@ -99,7 +121,8 @@ DAB.ModernExecutionsInteractive = function (el) {
     d3.json('data/dpic.json', function (data) {
       
       var minx = d3.min( data, function ( d ) { return year(d.date); } )
-      ,   maxx = d3.max( data, function ( d ) { return year(d.date); } )
+      //,   maxx = d3.max( data, function ( d ) { return year(d.date); } )
+      ,   maxx = new Date('2015')
       ,   miny = 0
       ,   maxy = 120;
 
@@ -113,17 +136,44 @@ DAB.ModernExecutionsInteractive = function (el) {
         .domain([miny, maxy])
         .range([0, sizes.height]);
       var colors = [
-        'rgb(0,89,127)',
-        'rgb(45,90,128)',
-        'rgb(191,134,191)',
-        'rgb(161,161,229)',
+        'rgb(255,149,207)',
+        'rgb(255,0,174)',
+        'rgb(255,207,149)',
+        'rgb(255,174,0)',
         'rgb(149,207,255)',
-        'rgb(0,174,255)',
+        'rgb(0,174,255)'
       ];
       var color = d3.scale.ordinal()
         .domain([5,4,3,2,1,0])
         .range(colors)
       oneYearsWidth = x( new Date('2014-01-01')) - x( new Date('2013-01-01'));
+
+      var createKey = function (sortKey) {
+        if (el.find('table.key').length === 0) {
+          el.append('<table class="key"></table>');
+        }
+        var keyel = el.find('table.key')
+        keyel.html('');
+        for (var i = 0; i < keynames[sortKey].length; i++) {
+          keyel.append(
+            '<tr>' +
+              '<td style="background-color:' + color(i) + ';" class="colorblock"></td>' +
+              '<td>' + keynames[sortKey][i] + '</td>' +
+            '</tr>'
+          );
+        }
+      };
+
+      var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient('bottom')
+        .ticks(10)
+      svg.append('g').attr('class', 'x-axis')
+      svg.select('g.x-axis')
+        .call(xAxis)
+        .attr('transform', 'translate(0,' + (sizes.height + 44) + ')')
+        .selectAll('text')
+        .attr('transform', 'translate(' + (oneYearsWidth / 2) + ',0)');
 
       var rect = svg.selectAll('rect')
         .data(sort(data, sortKey))
@@ -131,6 +181,7 @@ DAB.ModernExecutionsInteractive = function (el) {
         .append('rect');
 
       var create = function (sortKey) {
+        createKey(sortKey);
         var indices = {};
         rect
           .attr('transform', function (d, i) {
@@ -155,10 +206,56 @@ DAB.ModernExecutionsInteractive = function (el) {
             var ypos = y(indices[date]);
             return 'translate(' + xpos + ',' + ypos + ')';
           })
-          .style( 'fill', function (d, i) { return color(colorIndex[d[sortKey]]); } );
+          .style( 'fill', function (d, i) { return color(colorIndex[d[sortKey]]); } )
+        el.find('rect')
+          .on('mouseover', function (e) {
+            var d = d3.select(this).datum();
+            var name    = d.name
+            ,   method  = d.method
+            ,   race    = d.race
+            ,   sex     = d.sex 
+            ,   state   = d.state;
+            if (el.find('.inspector').length === 0) {
+              el.append(
+                '<table class="inspector">' +
+                  '<tr>' +
+                    '<th>name</th>' +
+                    '<td class="inspector-name">' + name + '</td>' + 
+                  '</tr>' +
+                  '<tr>' +
+                    '<th>method</th>' +
+                    '<td class="inspector-method">' + method + '</td>' + 
+                  '</tr>' +
+                  '<tr>' +
+                    '<th>race</th>' +
+                    '<td class="inspector-race">' + race + '</td>' + 
+                  '</tr>' +
+                  '<tr>' +
+                    '<th>sex</th>' +
+                    '<td class="inspector-sex">' + sex + '</td>' + 
+                  '</tr>' +
+                  '<tr>' +
+                    '<th>state</th>' +
+                    '<td class="inspector-state">' + state + '</td>' + 
+                  '</tr>' +
+                '</table>'
+              );
+            } else {
+              var inspector = el.find('.inspector');
+            }
+            var inspector = el.find('.inspector');
+            inspector.css({
+              'top': e.clientY - el.offset().top - 200,
+              'left': e.clientX - el.offset().left - (inspector.width() / 2)
+            });
+          })
+          .on('mouseout', function (e) {
+            el.find('.inspector').remove();
+          })
       };
 
       var update = function (sortKey) {
+        createKey(sortKey);
         var indices = {};
         rect
           .transition()

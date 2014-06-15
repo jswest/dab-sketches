@@ -132,9 +132,6 @@ DAB.ModernExecutionsMapInteractive = function (el) {
               );
             } else {
               var inspector = el.find('.inspector');
-              inspector.find('td').eq(0).html(name);
-              inspector.find('td').eq(1).html(count);
-              inspector.find('td').eq(2).html(state);
             }
             var inspector = el.find('.inspector');
             inspector.css({
