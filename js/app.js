@@ -25,14 +25,14 @@ DAB.NameList = function () {
     d3.selectAll('.collapsed-name-pane').on('mouseover', function (d, i) {
       if ($('footer.stream-footer').hasClass('hidden')) {
         $('footer.stream-footer').removeClass('hidden');
-        $('footer.stream-footer ul').css('display', 'block');
       }
-      d3.select('.name-date').text(d.date);
-      d3.select('.name-method').text(d.method);
-      d3.select('.name-race').text(d.race);
-      d3.select('.name-age').text(d.age);
-      d3.select('.name-state').text(d.state);
-      d3.select('.name-victims').text(d["number / race / sex of victims"]);
+      d3.select('td.name-date').text(d.date);
+      d3.select('td.name-method').text(d.method);
+      d3.select('td.name-race').text(d.race);
+      d3.select('td.name-age').text(d.age);
+      d3.select('td.name-sex').text(d.sex);
+      d3.select('td.name-state').text(d.state);
+      d3.select('td.name-victims').text(d["number / race / sex of victims"]);
     });
     d3.selectAll('.collapsed-name-pane').on('mouseout', function (d, i) {
       if (!$('footer.stream-footer').hasClass('hidden')) {
@@ -110,7 +110,6 @@ DAB.NameList = function () {
           d3.select(this).select('div.essay-content').classed('show', true);
           var thisel = $(this);
           $(this).find('button.x').on('click', function (e) {
-            console.log('xbuttonclickhandler called');
             thisel.find('button.x').remove();
             thisel.find('div.essay-content').remove();
             thisel.removeClass('expanded-name-pane');
