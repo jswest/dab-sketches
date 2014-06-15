@@ -146,7 +146,7 @@ header.primary-header {
     right: -150px;
     width: 172px;
     height: 100%;
-    z-index: 3;
+    z-index: 2;
     -webkit-transition: all 500ms;
     transition: all 500ms; }
     .stream-wrapper nav.minimap .minimap-background-color {
@@ -325,11 +325,10 @@ header.primary-header {
         .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper {
           cursor: pointer; }
           .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper circle {
-            fill: #463e40; }
+            fill: #463e40;
+            transition: all 500ms; }
           .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active circle, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover circle {
             fill: #00aeef; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active text, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover text {
-            font-family: "Source Sans Pro Black"; }
           .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active.parent circle, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover.parent circle {
             fill: none; }
           .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper text {

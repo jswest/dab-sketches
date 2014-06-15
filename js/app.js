@@ -40,9 +40,9 @@ DAB.NameList = function () {
       }
     });
   
-    $('.year-marker').eq(0).before('<article class="pane interactive interlude" id="interlude-2"></article>');
-    $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-1"></article>');
-    $('.year-marker').eq(10).before('<article class="pane interactive interlude" id="interlude-0"></article>');
+    $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-2"></article>');
+    $('.year-marker').eq(10).before('<article class="pane interactive interlude" id="interlude-1"></article>');
+    $('.year-marker').eq(15).before('<article class="pane interactive interlude" id="interlude-0"></article>');
 
 
     d3.json('data/panes.json', function (data) {
@@ -74,10 +74,15 @@ DAB.NameList = function () {
       });
       $('li.minimap-year').eq(5).before(
         '<li class="minimap-interlude">' + 
-          'The Narrow Practice of Capital Punishment' +
+          'Last Words in Texas' +
         '</li>'
       );
       $('li.minimap-year').eq(10).before(
+        '<li class="minimap-interlude">' + 
+          'The Narrow Practice of Capital Punishment' +
+        '</li>'
+      );
+      $('li.minimap-year').eq(15).before(
         '<li class="minimap-interlude">' + 
           'The State of Modern Capital Punishment' +
         '</li>'

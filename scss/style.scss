@@ -181,7 +181,7 @@ header.primary-header {
     right: -150px;
     width: 172px;
     height: 100%;
-    z-index: 3;
+    z-index: 2;
     -webkit-transition: all 500ms;
     transition: all 500ms;
     .minimap-background-color {
@@ -393,14 +393,12 @@ header.primary-header {
             cursor: pointer;
             circle {
               fill: $color2;
+              transition: all 500ms;
             }
             &.active,
             &:hover {
               circle {
                 fill: $color5;
-              }
-              text {
-                font-family: "Source Sans Pro Black";
               }
               &.parent {
                 circle {

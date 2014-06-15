@@ -80,6 +80,7 @@ DAB.LastWordsInteractive = function (el) {
         el.append(
           '<div class="words-overlay">' +
             '<div class="words">' +
+              '<button class="x"></button>' +
               '<h1>' + d.name + '</h1>' +
               d.statement +
             '</div>' +
@@ -87,11 +88,8 @@ DAB.LastWordsInteractive = function (el) {
         el.find('.words-overlay').on('click', function (e) {
           $(this).remove();
           d3el.classed('active', false);
-        })
+        });
       });
-
-
-        //.style("fill", function(d) { return color(d.word); });
 
     });
   };
