@@ -4,6 +4,7 @@ $color3: rgb(0,0,0);
 $color4: rgb(255,255,255);
 $color5: rgb(0,174,239);
 $color6: rgb(140,124,128);
+$color7: rgb(68,70,79);
 
 $headerheight: 44px;
 
@@ -40,6 +41,7 @@ button {
   background-color: transparent;
   border: none;
   border-radius: 0;
+  cursor: pointer;
   display: block;
   font-family: "Source Sans Pro Extra Light";
 }
@@ -313,7 +315,7 @@ header.primary-header {
           left: $headerheight;
         }
         h2.interlude-subtitle {
-          color: $color2;
+          color: $color7;
           font-family: "Source Sans Pro Extra Light";
           font-size: $headerheight / 2;
           text-transform: uppercase;
@@ -340,11 +342,12 @@ header.primary-header {
             text-align: center;
             text-transform: uppercase;
             height: $headerheight;
+            transition: all 500ms;
             &:hover {
-              background-color: $color3;
+              background-color: $color5;
             }
             &.active {
-              background-color: $color3;
+              background-color: $color5;
               font-family: "Source Sans Pro Black";
             }
           }

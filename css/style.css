@@ -31,6 +31,7 @@ button {
   background-color: transparent;
   border: none;
   border-radius: 0;
+  cursor: pointer;
   display: block;
   font-family: "Source Sans Pro Extra Light"; }
 
@@ -259,7 +260,7 @@ header.primary-header {
           top: 22px;
           left: 44px; }
         .stream-wrapper .stream .pane.interactive h2.interlude-subtitle {
-          color: #463e40;
+          color: #44464f;
           font-family: "Source Sans Pro Extra Light";
           font-size: 22px;
           text-transform: uppercase;
@@ -284,11 +285,12 @@ header.primary-header {
             margin-top: 11px;
             text-align: center;
             text-transform: uppercase;
-            height: 44px; }
+            height: 44px;
+            transition: all 500ms; }
             .stream-wrapper .stream .pane.interactive ul.controls li:hover {
-              background-color: black; }
+              background-color: #00aeef; }
             .stream-wrapper .stream .pane.interactive ul.controls li.active {
-              background-color: black;
+              background-color: #00aeef;
               font-family: "Source Sans Pro Black"; }
           .stream-wrapper .stream .pane.interactive ul.controls.clicked {
             height: auto; }
