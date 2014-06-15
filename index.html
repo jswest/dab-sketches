@@ -74,6 +74,7 @@
     <script src="js/vendor/d3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/tdcj.js"></script>
     <script src="js/dpic.js"></script>
     <script src="js/dpic-heat.js"></script>
     <script>
@@ -106,6 +107,13 @@ $(document).ready(function () {
           $('#interlude-1').data('loaded', 'true');
           var map = new DAB.ModernExecutionsMapInteractive($('#interlude-1'));
           map.build();
+        }
+      }
+      if ($('#interlude-2').offset().top - $(window).height() <= 0) {
+        if (!$('#interlude-2').data('loaded')) {
+          $('#interlude-2').data('loaded', 'true');
+          var words = new DAB.LastWordsInteractive($('#interlude-2'));
+          words.build();
         }
       }
     });

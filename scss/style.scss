@@ -178,8 +178,8 @@ header.primary-header {
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: -100px;
-    width: 122px;
+    right: -150px;
+    width: 172px;
     height: 100%;
     z-index: 3;
     -webkit-transition: all 500ms;
@@ -302,7 +302,7 @@ header.primary-header {
           letter-spacing: 2px;
           position: absolute;
           top: 0;
-          left: $headerheight * (3/2);
+          left: $headerheight;
           text-transform: uppercase;
         }
         h1.interlude-title {
@@ -318,7 +318,7 @@ header.primary-header {
           font-size: $headerheight / 2;
           text-transform: uppercase;
           position: absolute;
-          top: $headerheight * (3/2);
+          top: $headerheight * 2;
           left: $headerheight;
         }
         ul.controls {
@@ -352,6 +352,32 @@ header.primary-header {
             height: auto;
           }
         }
+        .words-overlay {
+          background-color: rgba(255,255,255,.75);
+          cursor: pointer;
+          overflow: hidden;
+          position: fixed;
+          top: $headerheight;
+          left: 0;
+          width: 100%;
+          height: calc(100% - 44px);
+          z-index: 3;
+          .words {
+            margin-top: $headerheight;
+            margin-left: $headerheight;
+            width: 600px;
+            height: auto;
+            h1 {
+              font-size: $headerheight;
+              margin-bottom: $headerheight;
+              text-transform: uppercase;
+            }
+            p {
+              color: $color1;
+              width: 100%;
+            }
+          }
+        }
         svg {
           path.county {
             stroke: $color1;
@@ -362,6 +388,42 @@ header.primary-header {
             pointer-events: none;
             stroke: $color1;
             stroke-width: 1px;
+          }
+          g.bubble-wrapper {
+            cursor: pointer;
+            circle {
+              fill: $color2;
+            }
+            &.active,
+            &:hover {
+              circle {
+                fill: $color5;
+              }
+              text {
+                font-family: "Source Sans Pro Black";
+              }
+              &.parent {
+                circle {
+                  fill: none;
+                }
+              }
+            }
+            text {
+              fill: $color4;
+              font-family: "Source Sans Pro Extra Light";
+              font-weight: 400;
+              letter-spacing: 1px;
+              text-anchor: middle;
+              text-transform: uppercase;
+            }
+            &.parent {
+              circle {
+                fill: none;
+              }
+              circle:hover {
+                fill: none;
+              }
+            }
           }
         }
       }

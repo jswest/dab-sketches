@@ -130,7 +130,7 @@ header.primary-header {
     height: 100%;
     z-index: 2; }
     .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 50%, black 100%);
+      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
       background-size: 100% 100%;
       opacity: .1;
       pointer-events: none;
@@ -143,8 +143,8 @@ header.primary-header {
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: -100px;
-    width: 122px;
+    right: -150px;
+    width: 172px;
     height: 100%;
     z-index: 3;
     -webkit-transition: all 500ms;
@@ -250,7 +250,7 @@ header.primary-header {
           letter-spacing: 2px;
           position: absolute;
           top: 0;
-          left: 66px;
+          left: 44px;
           text-transform: uppercase; }
         .stream-wrapper .stream .pane.interactive h1.interlude-title {
           font-size: 44px;
@@ -264,7 +264,7 @@ header.primary-header {
           font-size: 22px;
           text-transform: uppercase;
           position: absolute;
-          top: 66px;
+          top: 88px;
           left: 44px; }
         .stream-wrapper .stream .pane.interactive ul.controls {
           position: absolute;
@@ -292,6 +292,28 @@ header.primary-header {
               font-family: "Source Sans Pro Black"; }
           .stream-wrapper .stream .pane.interactive ul.controls.clicked {
             height: auto; }
+        .stream-wrapper .stream .pane.interactive .words-overlay {
+          background-color: rgba(255, 255, 255, 0.75);
+          cursor: pointer;
+          overflow: hidden;
+          position: fixed;
+          top: 44px;
+          left: 0;
+          width: 100%;
+          height: calc(100% - 44px);
+          z-index: 3; }
+          .stream-wrapper .stream .pane.interactive .words-overlay .words {
+            margin-top: 44px;
+            margin-left: 44px;
+            width: 600px;
+            height: auto; }
+            .stream-wrapper .stream .pane.interactive .words-overlay .words h1 {
+              font-size: 44px;
+              margin-bottom: 44px;
+              text-transform: uppercase; }
+            .stream-wrapper .stream .pane.interactive .words-overlay .words p {
+              color: #231f20;
+              width: 100%; }
         .stream-wrapper .stream .pane.interactive svg path.county {
           stroke: #231f20;
           stroke-width: 0.25px; }
@@ -300,6 +322,27 @@ header.primary-header {
           pointer-events: none;
           stroke: #231f20;
           stroke-width: 1px; }
+        .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper {
+          cursor: pointer; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper circle {
+            fill: #463e40; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active circle, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover circle {
+            fill: #00aeef; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active text, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover text {
+            font-family: "Source Sans Pro Black"; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active.parent circle, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover.parent circle {
+            fill: none; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper text {
+            fill: white;
+            font-family: "Source Sans Pro Extra Light";
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-anchor: middle;
+            text-transform: uppercase; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.parent circle {
+            fill: none; }
+          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.parent circle:hover {
+            fill: none; }
       .stream-wrapper .stream .pane.name-pane {
         height: 44px;
         width: 100%; }

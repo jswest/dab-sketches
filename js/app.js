@@ -40,6 +40,7 @@ DAB.NameList = function () {
       }
     });
   
+    $('.year-marker').eq(0).before('<article class="pane interactive interlude" id="interlude-2"></article>');
     $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-1"></article>');
     $('.year-marker').eq(10).before('<article class="pane interactive interlude" id="interlude-0"></article>');
 

@@ -103,9 +103,6 @@ DAB.ModernExecutionsMapInteractive = function (el) {
         })
         .classed("county", true)
         .style('fill', function (d) {
-          if ( d.state === 'ak' || d.name === 'ak' || d.state === 'hi' || d.name === 'hi' ) {
-            return "none";
-          }
           return getRange(d.properties.count);
         });
       svg.append('g').attr('class', 'states')
