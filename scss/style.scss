@@ -382,6 +382,21 @@ header.primary-header {
           }
         }
         svg {
+          rect {
+            cursor: pointer;
+          }
+          .x-axis {
+            path.domain {
+              fill: none;
+              stroke: none;
+            }
+            text {
+              fill: $color4;
+              font-family: "Source Sans Pro Extra Light";
+              font-size: 11px;
+              text-anchor: beginning;
+            }
+          }
           path.county {
             stroke: $color1;
             stroke-width: 0.25px;
@@ -545,6 +560,11 @@ header.primary-header {
     }
   }
 }
+table.inspector {
+  background-color: rgba(0,0,0,.5);
+  padding: 11px;
+  width: auto;
+}
 .inspector {
   position: absolute;
   width: 200px;
@@ -559,6 +579,23 @@ header.primary-header {
     text-align: center;
     text-transform: uppercase;
     height: 22px;
+  }
+  th,
+  td {
+    color: $color4;
+    float: left;
+    font-size: 13px;
+    line-height: 22px;
+    text-transform: uppercase;
+    height: 22px;
+  }
+  th {
+    font-family: "Source Sans Pro Extra Light";
+    padding-right: 5px;
+  }
+  td {
+    font-family: "Source Sans Pro Black";
+    padding-left: 5px;
   }
 }
 table.key {
