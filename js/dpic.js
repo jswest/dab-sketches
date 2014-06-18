@@ -17,11 +17,6 @@ DAB.ModernExecutionsInteractive = function (el) {
     });
   };
 
-  var createTitle = function () {
-    el.append('<h3 class="interlude-kicker">Interlude</h3>');
-    el.append('<h1 class="interlude-title">Modern Executions</h1>');
-  };
-
   var colorIndex = {
     "white": 0,
     "black": 1,

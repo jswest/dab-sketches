@@ -246,8 +246,8 @@ header.primary-header {
     height: 100%;
     z-index: 1;
     .year-marker {
+      clear: both;
       margin-bottom: 22px;
-      margin-top: 88px;
       h1 {
         color: $color2;
         margin-left: 44px;
@@ -258,7 +258,8 @@ header.primary-header {
       width: 100%;
       height: 100%;
       &.narration {
-        h1 {
+        clear: both;
+        h1.project-title {
           font-size: $headerheight * 2;
           line-height: $headerheight * 2;
           margin-left: $headerheight;
@@ -268,7 +269,7 @@ header.primary-header {
           height: $headerheight * 2;
           text-transform: uppercase;
         }
-        h2 {
+        h2.byline {
           color: $color2;
           font-size: $headerheight / 2;
           line-height: $headerheight / 2;
@@ -277,6 +278,29 @@ header.primary-header {
           position: absolute;
           top: 50%;
           height: $headerheight / 2;
+          text-transform: uppercase;
+        }
+        h3.kicker {
+          color: $color5;
+          font-family: "Source Sans Pro Black";
+          font-size: $headerheight / 4;
+          letter-spacing: 2px;
+          padding-top: 300px;
+          margin-left: $headerheight;
+          top: 50%;
+          left: $headerheight;
+          text-transform: uppercase;
+        }
+        h1.title {
+          font-size: $headerheight * (3/2);
+          margin-left: $headerheight;
+          text-transform: uppercase;
+        }
+        h2.subtitle {
+          color: $color7;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: $headerheight / 2;
+          margin-left: $headerheight;
           text-transform: uppercase;
         }
         p {
@@ -290,38 +314,13 @@ header.primary-header {
         }
       }
       &.interactive {
+        clear: both;
         margin-top: $headerheight * 4;
         position: relative;
         height: calc(44px + 100%);
         svg {
           position: relative;
           top: 44px;
-        }
-        h3.interlude-kicker {
-          color: $color5;
-          font-family: "Source Sans Pro Black";
-          font-size: $headerheight / 4;
-          letter-spacing: 2px;
-          position: absolute;
-          top: 0;
-          left: $headerheight;
-          text-transform: uppercase;
-        }
-        h1.interlude-title {
-          font-size: $headerheight;
-          text-transform: uppercase;
-          position: absolute;
-          top: $headerheight / 2;
-          left: $headerheight;
-        }
-        h2.interlude-subtitle {
-          color: $color7;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: $headerheight / 2;
-          text-transform: uppercase;
-          position: absolute;
-          top: $headerheight * 2;
-          left: $headerheight;
         }
         ul.controls {
           position: absolute;
@@ -444,13 +443,16 @@ header.primary-header {
         }
       }
       &.name-pane {
+        float: left;
+        position: relative;
         height: $headerheight;
-        width: 100%;
+        width: 400px;
         h1 {
           color: $color2;
           cursor: pointer;
           font-family: "Source Sans Pro Extra Light";
-          font-size: $headerheight;
+          font-size: $headerheight / 2;
+          line-height: $headerheight / 2;
           margin-left: $headerheight;
           margin-right: $headerheight;
           text-transform: uppercase;
@@ -478,7 +480,9 @@ header.primary-header {
             font-family: "Source Sans Pro Black";
           }
           &.expanded-name-pane {
+            clear: both;
             overflow-y: scroll;
+            width: 100%;
             height: auto;
             .essay-content {
               margin-left: $headerheight;

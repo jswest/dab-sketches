@@ -2,12 +2,6 @@ DAB.LastWordsInteractive = function (el) {
 
   var that = this;
 
-  el.append('<h3 class="interlude-kicker">Interlude</h3>');
-  el.append('<h1 class="interlude-title">Last Words in Texas</h1>');
-  el.append('<h2 class="interlude-subtitle">The most common last words from the Condemned in Texas</h2>');
-
-
-
   var colors = [
     'rgb(70,62,64)',
     'rgb(68,70,79)',

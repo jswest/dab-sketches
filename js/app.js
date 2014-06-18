@@ -23,16 +23,18 @@ DAB.NameList = function () {
       }
     });
     d3.selectAll('.collapsed-name-pane').on('mouseover', function (d, i) {
-      if ($('footer.stream-footer').hasClass('hidden')) {
-        $('footer.stream-footer').removeClass('hidden');
+      if (!$(this).hasClass('clickable-name')) {
+        if ($('footer.stream-footer').hasClass('hidden')) {
+          $('footer.stream-footer').removeClass('hidden');
+        }
+        d3.select('td.name-date').text(d.date);
+        d3.select('td.name-method').text(d.method);
+        d3.select('td.name-race').text(d.race);
+        d3.select('td.name-age').text(d.age);
+        d3.select('td.name-sex').text(d.sex);
+        d3.select('td.name-state').text(d.state);
+        d3.select('td.name-victims').text(d["number / race / sex of victims"]);      
       }
-      d3.select('td.name-date').text(d.date);
-      d3.select('td.name-method').text(d.method);
-      d3.select('td.name-race').text(d.race);
-      d3.select('td.name-age').text(d.age);
-      d3.select('td.name-sex').text(d.sex);
-      d3.select('td.name-state').text(d.state);
-      d3.select('td.name-victims').text(d["number / race / sex of victims"]);
     });
     d3.selectAll('.collapsed-name-pane').on('mouseout', function (d, i) {
       if (!$('footer.stream-footer').hasClass('hidden')) {
@@ -40,8 +42,37 @@ DAB.NameList = function () {
       }
     });
   
-    $('.year-marker').eq(5).before('<article class="pane interactive interlude" id="interlude-2"></article>');
-    $('.year-marker').eq(10).before('<article class="pane interactive interlude" id="interlude-1"></article>');
+    $('.year-marker').eq(5).before(
+      '<article class="pane narration">' +
+        '<h3 class="kicker">interlude</h3>' +
+        '<h1 class="title">Last Words</h1>' +
+        '<h2 class="subtitle">Final statements from the condemned in Texas</h2>' +
+      '</article>' +
+      '<article class="pane narration">' +
+        '<p>' + 
+          'The Texas Department of Criminal Justice maintains a database of final statements from its executed inmates. ' + 
+          'The following are the most frequent words found in that database. ' +
+          'Clicking on a word brings up a representative final statement. ' +
+          'Some of these statements are angry; some are remorseful&mdash;all of them are humanizing.' +
+        '</p>' +
+      '</article>' +
+      '<article class="pane interactive interlude" id="interlude-2"></article>'
+    );
+    $('.year-marker').eq(10).before(
+      '<article class="pane narration">' +
+        '<h3 class="kicker">interlude</h3>' +
+        '<h1 class="title">The Narrow Practice of Capital Punishment</h1>' +
+        '<h2 class="subtitle">Mapping executions from 1977 to 2014</h2>' +
+      '</article>' +
+      '<article class="pane narration">' +
+        '<p>' + 
+          'The following is a county-by-county map of the United States, with the color of the county representing the number of executions in that county since 1977. ' +
+          'It shows how a small minority of counties are responsible for an overwhelming majority of executions. ' +
+          'It is assumed that the death penalty is a widely practiced institution; the truth is much different.' +
+        '</p>' +
+      '</article>' +
+      '<article class="pane interactive interlude" id="interlude-1"></article>'
+    );
     $('.year-marker').eq(15).before('<article class="pane interactive interlude" id="interlude-0"></article>');
 
 
@@ -100,10 +131,6 @@ DAB.NameList = function () {
           $(this).off('click')
           $(this).removeClass('collapsed-name-pane')
           $(this).addClass('expanded-name-pane');
-          var streamScrollTop = $('.stream').scrollTop();
-          $('.stream').animate({
-            "scrollTop": streamScrollTop + $(this).offset().top - 44
-          }, 500);
           var d = d3.select(this).datum();
           d3.select(this).append('div').attr('class', 'essay-content').html(d.essay)
           d3.select(this).append('button').attr('class', 'x');
@@ -118,9 +145,8 @@ DAB.NameList = function () {
           });          
         }
       };
-
-    
       $('.clickable-name').on('click', nameClickHandler);
+      //$('.clickable-name').trigger('click');
     });
   });
 

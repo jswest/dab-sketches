@@ -131,7 +131,7 @@ header.primary-header {
     height: 100%;
     z-index: 2; }
     .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
+      background-image: -webkit-linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0) 50%, black 100%);
       background-size: 100% 100%;
       opacity: .1;
       pointer-events: none;
@@ -201,8 +201,8 @@ header.primary-header {
     height: 100%;
     z-index: 1; }
     .stream-wrapper .stream .year-marker {
-      margin-bottom: 22px;
-      margin-top: 88px; }
+      clear: both;
+      margin-bottom: 22px; }
       .stream-wrapper .stream .year-marker h1 {
         color: #463e40;
         margin-left: 44px; }
@@ -210,63 +210,63 @@ header.primary-header {
       position: relative;
       width: 100%;
       height: 100%; }
-      .stream-wrapper .stream .pane.narration h1 {
-        font-size: 88px;
-        line-height: 88px;
-        margin-left: 44px;
-        margin-top: -176px;
-        position: absolute;
-        top: 50%;
-        height: 88px;
-        text-transform: uppercase; }
-      .stream-wrapper .stream .pane.narration h2 {
-        color: #463e40;
-        font-size: 22px;
-        line-height: 22px;
-        margin-top: 88px;
-        margin-left: 44px;
-        position: absolute;
-        top: 50%;
-        height: 22px;
-        text-transform: uppercase; }
-      .stream-wrapper .stream .pane.narration p {
-        color: #8c7c80;
-        font-family: "Source Sans Pro Black";
-        font-size: 33px;
-        line-height: 44px;
-        margin-top: 200px;
-        margin-left: 44px;
-        width: 800px; }
+      .stream-wrapper .stream .pane.narration {
+        clear: both; }
+        .stream-wrapper .stream .pane.narration h1.project-title {
+          font-size: 88px;
+          line-height: 88px;
+          margin-left: 44px;
+          margin-top: -176px;
+          position: absolute;
+          top: 50%;
+          height: 88px;
+          text-transform: uppercase; }
+        .stream-wrapper .stream .pane.narration h2.byline {
+          color: #463e40;
+          font-size: 22px;
+          line-height: 22px;
+          margin-top: 88px;
+          margin-left: 44px;
+          position: absolute;
+          top: 50%;
+          height: 22px;
+          text-transform: uppercase; }
+        .stream-wrapper .stream .pane.narration h3.kicker {
+          color: #00aeef;
+          font-family: "Source Sans Pro Black";
+          font-size: 11px;
+          letter-spacing: 2px;
+          padding-top: 300px;
+          margin-left: 44px;
+          top: 50%;
+          left: 44px;
+          text-transform: uppercase; }
+        .stream-wrapper .stream .pane.narration h1.title {
+          font-size: 66px;
+          margin-left: 44px;
+          text-transform: uppercase; }
+        .stream-wrapper .stream .pane.narration h2.subtitle {
+          color: #44464f;
+          font-family: "Source Sans Pro Extra Light";
+          font-size: 22px;
+          margin-left: 44px;
+          text-transform: uppercase; }
+        .stream-wrapper .stream .pane.narration p {
+          color: #8c7c80;
+          font-family: "Source Sans Pro Black";
+          font-size: 33px;
+          line-height: 44px;
+          margin-top: 200px;
+          margin-left: 44px;
+          width: 800px; }
       .stream-wrapper .stream .pane.interactive {
+        clear: both;
         margin-top: 176px;
         position: relative;
         height: calc(44px + 100%); }
         .stream-wrapper .stream .pane.interactive svg {
           position: relative;
           top: 44px; }
-        .stream-wrapper .stream .pane.interactive h3.interlude-kicker {
-          color: #00aeef;
-          font-family: "Source Sans Pro Black";
-          font-size: 11px;
-          letter-spacing: 2px;
-          position: absolute;
-          top: 0;
-          left: 44px;
-          text-transform: uppercase; }
-        .stream-wrapper .stream .pane.interactive h1.interlude-title {
-          font-size: 44px;
-          text-transform: uppercase;
-          position: absolute;
-          top: 22px;
-          left: 44px; }
-        .stream-wrapper .stream .pane.interactive h2.interlude-subtitle {
-          color: #44464f;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: 22px;
-          text-transform: uppercase;
-          position: absolute;
-          top: 88px;
-          left: 44px; }
         .stream-wrapper .stream .pane.interactive ul.controls {
           position: absolute;
           top: 110px;
@@ -355,13 +355,16 @@ header.primary-header {
           .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.parent circle:hover {
             fill: none; }
       .stream-wrapper .stream .pane.name-pane {
+        float: left;
+        position: relative;
         height: 44px;
-        width: 100%; }
+        width: 400px; }
         .stream-wrapper .stream .pane.name-pane h1 {
           color: #463e40;
           cursor: pointer;
           font-family: "Source Sans Pro Extra Light";
-          font-size: 44px;
+          font-size: 22px;
+          line-height: 22px;
           margin-left: 44px;
           margin-right: 44px;
           text-transform: uppercase;
@@ -383,7 +386,9 @@ header.primary-header {
         .stream-wrapper .stream .pane.name-pane.clickable-name h1 {
           font-family: "Source Sans Pro Black"; }
         .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane {
+          clear: both;
           overflow-y: scroll;
+          width: 100%;
           height: auto; }
           .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane .essay-content {
             margin-left: 44px;
