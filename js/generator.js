@@ -87,7 +87,7 @@ DAB.Generator = function () {
       }
     }
 
-    $('.pane').height($(window).height());
+    $('.pane').height($(window).height() - 44);
     var outTimer = setTimeout(function () {
       $('.interlude').removeClass('out');
     }, 100);

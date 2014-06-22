@@ -47,6 +47,13 @@ $headerheight: 44px;
     position: relative;
     width: 100%;
     // height: set in javascript
+    &.interactive {
+      h1.graph-title {
+        font-size: 44px;
+        position: absolute;
+        left: 44px;
+      }
+    }
     &.narration {
       h1, h2, h3 {
         margin-left: $headerheight;

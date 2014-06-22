@@ -34,7 +34,7 @@ DAB.ModernExecutionsMapInteractive = function (el) {
 
   var createKey = function () {
     el.append(
-      '<table class="key">' +
+      '<table class="key" style="top:auto;bottom:44px;">' +
         '<tr>' +
           '<td class="colorblock"></td>' +
           '<td>0 executions</td>' +
@@ -63,6 +63,8 @@ DAB.ModernExecutionsMapInteractive = function (el) {
     }
   };
 
+  el.append('<h1 class="graph-title">Executions 1977 to present</h1>');
+
   this.build = function () {
 
     createKey();
@@ -76,7 +78,7 @@ DAB.ModernExecutionsMapInteractive = function (el) {
         .domain([0, 10, 100, 1000])
         .range([ 'rgb(0,0,0)', 'rgb(50,50,50)', 'rgb(100,100,100)', 'rgb(255,255,255)' ]);
       var projection = d3.geo.albersUsa()
-        .scale($(window).width() + 300)
+        .scale($(window).width())
         .translate([el.width() / 2, el.height() / 2]);
       var path = d3.geo.path()
         .projection(projection);

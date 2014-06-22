@@ -1,5 +1,8 @@
 DAB.HistoricalExecutionsInteractive = function (el) {
 
+
+  el.append('<h1 class="graph-title">Executions 1776 to 2002</h1>');
+
 	var colorIndex = {
 		'lethal injection': 0,
 		'electrocution': 1,

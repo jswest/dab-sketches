@@ -17,6 +17,8 @@ DAB.ModernExecutionsInteractive = function (el) {
     });
   };
 
+  el.append('<h1 class="graph-title">executions 1977 to present</h1>');
+
   var colorIndex = {
     "white": 0,
     "black": 1,

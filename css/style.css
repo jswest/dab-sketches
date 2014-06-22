@@ -162,6 +162,10 @@ header#primary-header {
     clear: both;
     position: relative;
     width: 100%; }
+    #stream .pane.interactive h1.graph-title {
+      font-size: 44px;
+      position: absolute;
+      left: 44px; }
     #stream .pane.narration h1, #stream .pane.narration h2, #stream .pane.narration h3 {
       margin-left: 44px;
       position: absolute; }

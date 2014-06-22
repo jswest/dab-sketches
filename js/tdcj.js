@@ -1,5 +1,7 @@
 DAB.LastWordsInteractive = function (el) {
 
+  el.append('<h1 class="graph-title">Last Words in Texas</h1>');
+
   var that = this;
 
   var colors = [
