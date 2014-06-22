@@ -1,0 +1,74 @@
+#minimap {
+	cursor: pointer;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: absolute;
+	top: $headerheight;
+	right: 0;
+	width: 220px;
+	height: calc(100% - 44px);
+	z-index: 3;
+	-webkit-transition: all 500ms;
+	transition: all 500ms;
+	#minimap-list {
+		padding-bottom: 22px;
+		position: relative;
+		left: 22px;
+		width: 200px;
+		height: auto;
+		li {
+			font-size: 11px;
+			line-height: $headerheight / 2;
+			list-style: none;
+			position: relative;
+			width: 100%;
+			z-index: 1;
+			&.year {
+				color: $color3;
+				font-family: "Source Sans Pro Extra Light";
+				padding-top: $headerheight / 4;
+				margin-left: 22px;
+			}
+			&.interlude {
+				color: $color6;
+				font-family: "Source Sans Pro Black";
+				padding-top: $headerheight / 4;
+				text-transform: uppercase;
+			}
+			&.name {
+				color: $color7;
+				font-family: "Source Sans Pro Black";
+				margin-left: 22px;
+				text-transform: uppercase;
+			}
+		}
+		.color {
+			background-color: $color2;
+			opacity: 0.75;
+			position: absolute;
+			top: 0;
+			left: -22px;
+			width: 220px;
+			height: 100%;
+			z-index: 0;
+			-webkit-transition: all 500ms;
+			transition: all 500ms;
+		}
+	}
+	&.collapsed {
+		right: -200px;
+		#minimap-list {
+			.color {
+				opacity: 0;
+			}
+		}
+		&:hover {
+			right: 0;
+			#minimap-list {
+				.color {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+}

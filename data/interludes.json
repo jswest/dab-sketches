@@ -1,0 +1,100 @@
+[
+  {
+    "name": "opening",
+    "position": 0,
+    "panes": [
+      {
+        "type": "narration",
+        "content": "<h1 class='project-title'>Damnatio ad Bestias</h1><h2 class='byline'>By Galen Beebe, Karim Hajj, Gabe Isman, and John West</h2>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>In 1974, the Supreme Court ruled that capital punishment was not unconstitutional, and the death penalty, which had been paused for a decade, was implemented again in 26 states.</p>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>Here are the names of every person executed since that Supreme Court ruling. We have highlighted some names, and there are a series of interludes throughout.</p>"
+      }
+    ]
+  },
+  {
+    "name": "last words in texas",
+    "position": 7,
+    "panes": [
+      {
+        "type": "narration",
+        "content": "<h3 class='kicker'>interlude</h3><h1 class='title'>last words</h1><h2 class='subtitle'>final statements from the condemned in texas</h2>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>Texas keeps a database of the last words of its condemned. The following are the top fifty most common words for their final statments. Clicking on each bubble brings up a representative statement in full.</p>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>Some of the statments are angry; some are remorseful. All of them are humanizing.</p>"
+      },
+      {
+        "type": "interactive",
+        "id": "last-words-interactive",
+        "builder": "LastWordsInteractive"
+      }
+    ]
+  },
+  {
+    "name": "unusual punishment",
+    "position": 12,
+    "panes": [
+      {
+        "type": "narration",
+        "content": "<h3 class='kicker'>interlude</h3><h1 class='title'>unusual punishment</h1><h2 class='subtitle'>how a small minority of counties execute a vast majority of prisoners</h2>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>Lorem ipsum dolor sit Portland mumblecore semiotics Truffaut tofu quinoa. Church-key aesthetic keffiyeh, master cleanse typewriter Echo Park fap Shoreditch +1 fingerstache butcher tousled Bushwick paleo.</p>"
+      },
+      {
+        "type": "interactive",
+        "id": "unusual-punishment-interactive",
+        "builder": "ModernExecutionsMapInteractive"
+      }
+    ]
+  },
+  {
+    "name": "how we kill",
+    "position": 17,
+    "panes": [
+      {
+        "type": "narration",
+        "content": "<h3 class='kicker'>interlude</h3><h1 class='title'>how we kill</h1><h2 class='subtitle'>executions 1776 to 2002</h2>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>Lorem ipsum dolor sit Portland mumblecore semiotics Truffaut tofu quinoa. Church-key aesthetic keffiyeh, master cleanse typewriter Echo Park fap Shoreditch +1 fingerstache butcher tousled Bushwick paleo.</p>"
+      },
+      {
+        "type": "interactive",
+        "id": "how-we-kill-interactive",
+        "builder": "HistoricalExecutionsInteractive"
+      }
+    ]
+  },
+ {
+    "name": "modern executions",
+    "position": 35,
+    "panes": [
+      {
+        "type": "narration",
+        "content": "<h3 class='kicker'>interlude</h3><h1 class='title'>modern executions</h1><h2 class='subtitle'>every execution from 1977 to 2014</h2>"
+      },
+      {
+        "type": "narration",
+        "content": "<p>Lorem ipsum dolor sit Portland mumblecore semiotics Truffaut tofu quinoa. Church-key aesthetic keffiyeh, master cleanse typewriter Echo Park fap Shoreditch +1 fingerstache butcher tousled Bushwick paleo.</p>"
+      },
+      {
+        "type": "interactive",
+        "id": "modern-executions-interactive",
+        "builder": "ModernExecutionsInteractive"
+      }
+    ]
+  }
+]

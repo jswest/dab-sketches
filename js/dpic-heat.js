@@ -67,10 +67,6 @@ DAB.ModernExecutionsMapInteractive = function (el) {
 
     createKey();
 
-    el.append('<h3 class="interlude-kicker">Interlude</h3>');
-    el.append('<h1 class="interlude-title">The Narrow Practice of Capital Punishment</h1>');
-    el.append('<h2 class="interlude-subtitle">Executions 1977 to Present</h2>');
-
     d3.json("data/us.repaired.topo.json", function (error, topology) {
       if (error) {
         console.log(error);
@@ -80,7 +76,7 @@ DAB.ModernExecutionsMapInteractive = function (el) {
         .domain([0, 10, 100, 1000])
         .range([ 'rgb(0,0,0)', 'rgb(50,50,50)', 'rgb(100,100,100)', 'rgb(255,255,255)' ]);
       var projection = d3.geo.albersUsa()
-        .scale(1600)
+        .scale($(window).width() + 300)
         .translate([el.width() / 2, el.height() / 2]);
       var path = d3.geo.path()
         .projection(projection);

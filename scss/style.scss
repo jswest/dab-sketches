@@ -1,576 +1,202 @@
 $color1: rgb(35,31,32);
 $color2: rgb(70,62,64);
-$color3: rgb(0,0,0);
-$color4: rgb(255,255,255);
-$color5: rgb(0,174,239);
-$color6: rgb(140,124,128);
-$color7: rgb(68,70,79);
+$color3: rgb(140,124,128);
+$color4: rgb(210,187,192);
+$color5: rgb(0,0,0);
+$color6: rgb(0,179,255);
+$color7: rgb(255,255,255);
 
 $headerheight: 44px;
 
-* {
-  margin: 0;
-  padding: 0;
-}
-html,
-body {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-body {
-  background-color: $color1;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: $color6;
-  font-family: "Source Sans Pro Black";
-  font-weight: 400;
-}
-p {
-  color: $color4;
-  font-family: "PT Serif";
-  font-size: 15px;
-  line-height: 33px;
-  margin-bottom: 33px;
-}
-button {
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  display: block;
-  font-family: "Source Sans Pro Extra Light";
-}
-button:focus {
-  outline: none;
-}
-.x {
-  background-image: url('../images/big-x.png');
-  cursor: pointer;
-  position: absolute;
-  top: $headerheight * 2;
-  right: $headerheight;
-  width: 100px;
-  height: 100px;
-}
+@import "reset";
+@import "header";
+@import "minimap";
 
 
 
 
 
-
-
-.modals {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  &.show {
-    display: block;
-  }
-  .share-modal {
-  }
-  article.about {
-    background-color: $color1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    .about-guts {
-      overflow-y: auto;
-      width: 100%;
-      height: 100%;
-      section {
-        margin-top: $headerheight;
-        margin-left: $headerheight;
-        width: 600px;
-        &:first-child {
-          margin-top: $headerheight * 2;
-        }
-        &:last-child {
-          margin-bottom: $headerheight;
-        }
-        h1 {
-          font-size: $headerheight;
-          letter-spacing: $headerheight / 20;
-          text-transform: uppercase;
-        }
-      }
-    }
-    &.hide {
-      display: none;
-    }
-  }
-}
-
-
-
-header.primary-header {
-  background-color: $color3;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: $headerheight;
-  z-index: 3;
-  h1 {
-    color: $color6;
-    font-size: $headerheight / 2;
-    line-height: $headerheight;
-    padding-left: $headerheight;
-    text-transform: uppercase;
-  }
-  nav {
-    position: absolute;
-    top: 0;
-    right: $headerheight;
-    width: 200px;
-    button {
-      color: $color6;
-      float: right;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: $headerheight / 2;
-      margin-left: $headerheight / 2;
-      margin-top: $headerheight / 4;
-      text-transform: uppercase;
-      height: $headerheight / 2;
-      -webkit-transition: opacity 0.5s;
-      transition: opacity 0.5s;
-      &.discourage {
-        opacity: .5;
-      }
-    }
-  }
-}
-.stream-wrapper {
-  overflow: hidden;
+#stream-wrapper {
+  overflow-y: scroll;
   position: absolute;
   top: $headerheight;
   left: 0;
   width: 100%;
   height: calc(100% - 44px);
-  .stream-modals {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    .blur {
-      background-image: -webkit-linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
-      background-size: 100% 100%;
-      opacity: .1;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-  nav.minimap {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: -150px;
-    width: 172px;
-    height: 100%;
-    z-index: 2;
-    -webkit-transition: all 500ms;
-    transition: all 500ms;
-    .minimap-background-color {
-      background-color: rgba(0,0,0,.5);
+}
+
+#stream {
+  padding-bottom: $headerheight;
+  .interlude {
+    opacity: 1;
+    -webkit-transition: opacity 500ms;
+    transition: opacity 500ms;
+    &.out {
       opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      -webkit-transition: opacity 500ms;
-      transition: opacity 500ms;
     }
-    ol {
-      overflow: scroll;
-      padding-top: 44px;
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      li {
-        color: $color4;
-        font-family: "Source Sans Pro Black";
-        font-size: 11px;
-        list-style: none;
-        line-height: 11px;
-        margin-left: 22px;
-        margin-bottom: 11px;
-        text-transform: uppercase;
-        &.minimap-interlude {
-          color: $color5;
-        }
-        &.minimap-year {
-          color: $color4;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: 11px;
-          margin-top: 11px;
-          text-align: center;
-        }
+  }
+  .pane {
+    clear: both;
+    position: relative;
+    width: 100%;
+    // height: set in javascript
+    &.narration {
+      h1, h2, h3 {
+        margin-left: $headerheight;
+        position: absolute;
       }
-    }
-    &:hover,
-    &.faux-hover {
-      right: 0;
-      .minimap-background-color {
-        opacity: 1;
+      h1.project-title {
+        font-size: $headerheight * 2;
+        top: calc(50% - 176px);
+      }
+      h2.byline {
+        color: $color2;
+        font-size: $headerheight / 2;
+        top: calc(50% + 88px);
+      }
+      p {
+        color: $color3;
+        font-family: "Source Sans Pro Black";
+        font-size: $headerheight * (3/4);
+        line-height: $headerheight;
+        margin-top: 200px;
+        margin-left: $headerheight;
+        width: 800px;
+      }
+      h1.title {
+        font-size: $headerheight * 2;
+        position: absolute;
+        top: calc(50% - 44px);
+      }
+      h2.subtitle {
+        color: $color2;
+        font-family: "Source Sans Pro Extra Light";
+        font-size: $headerheight / 2;
+        position: absolute;
+        top: calc(50% + 44px);
+      }
+      h3.kicker {
+        color: $color6;
+        font-size: $headerheight * (1/3);
+        position: absolute;
+        top: calc(50% - 88px);
       }
     }
   }
-  .stream {
-    overflow: hidden;
-    overflow-y: scroll;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  .year {
+    clear: both;
+    position: relative;
+    left: 44px;
+    width: calc(100% - 44px);
     .year-marker {
-      margin-bottom: 22px;
-      margin-top: 88px;
+      padding-top: $headerheight;
       h1 {
         color: $color2;
-        margin-left: 44px;
+        font-size: $headerheight * (2/3);
       }
     }
-    .pane {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      &.narration {
-        h1 {
-          font-size: $headerheight * 2;
-          line-height: $headerheight * 2;
-          margin-left: $headerheight;
-          margin-top: -$headerheight * 4;
-          position: absolute;
-          top: 50%;
-          height: $headerheight * 2;
-          text-transform: uppercase;
-        }
-        h2 {
-          color: $color2;
-          font-size: $headerheight / 2;
-          line-height: $headerheight / 2;
-          margin-top: $headerheight * 2;
-          margin-left: $headerheight;
-          position: absolute;
-          top: 50%;
-          height: $headerheight / 2;
-          text-transform: uppercase;
-        }
-        p {
-          color: $color6;
-          font-family: "Source Sans Pro Black";
-          font-size: $headerheight * (3/4);
-          line-height: $headerheight;
-          margin-top: 200px;
-          margin-left: $headerheight;
-          width: 800px;
-        }
-      }
-      &.interactive {
-        margin-top: $headerheight * 4;
-        position: relative;
-        height: calc(44px + 100%);
-        svg {
-          position: relative;
-          top: 44px;
-        }
-        h3.interlude-kicker {
-          color: $color5;
-          font-family: "Source Sans Pro Black";
-          font-size: $headerheight / 4;
-          letter-spacing: 2px;
-          position: absolute;
-          top: 0;
-          left: $headerheight;
-          text-transform: uppercase;
-        }
-        h1.interlude-title {
-          font-size: $headerheight;
-          text-transform: uppercase;
-          position: absolute;
-          top: $headerheight / 2;
-          left: $headerheight;
-        }
-        h2.interlude-subtitle {
-          color: $color7;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: $headerheight / 2;
-          text-transform: uppercase;
-          position: absolute;
-          top: $headerheight * 2;
-          left: $headerheight;
-        }
-        ul.controls {
-          position: absolute;
-          top: ($headerheight * 2) + ($headerheight / 2);
-          left: $headerheight;
-          width: $headerheight * 6;
-          z-index: 2;
-          li {
-            background-color: $color2;
-            color: $color4;
-            cursor: pointer;
-            display: block;
-            font-family: "Source Sans Pro Extra Light";
-            font-size: $headerheight * (1/3);
-            line-height: $headerheight;
-            list-style: none;
-            margin-top: $headerheight / 4;
-            text-align: center;
-            text-transform: uppercase;
-            height: $headerheight;
-            transition: all 500ms;
-            &:hover {
-              background-color: $color5;
-            }
-            &.active {
-              background-color: $color5;
-              font-family: "Source Sans Pro Black";
-            }
-          }
-          &.clicked {
-            height: auto;
-          }
-        }
-        .words-overlay {
-          background-color: rgba(255,255,255,.75);
-          cursor: pointer;
-          overflow: hidden;
-          position: fixed;
-          top: $headerheight;
-          left: 0;
-          width: 100%;
-          height: calc(100% - 44px);
-          z-index: 3;
-          .words {
-            margin-top: $headerheight;
-            margin-left: $headerheight;
-            width: 600px;
-            height: auto;
-            h1 {
-              font-size: $headerheight;
-              margin-bottom: $headerheight;
-              text-transform: uppercase;
-            }
-            p {
-              color: $color1;
-              width: 100%;
-            }
-          }
-        }
-        svg {
-          rect {
-            cursor: pointer;
-          }
-          .x-axis {
-            path.domain {
-              fill: none;
-              stroke: none;
-            }
-            text {
-              fill: $color4;
-              font-family: "Source Sans Pro Extra Light";
-              font-size: 11px;
-              text-anchor: beginning;
-            }
-          }
-          path.county {
-            stroke: $color1;
-            stroke-width: 0.25px;
-          }
-          path.state {
-            fill: transparent;
-            pointer-events: none;
-            stroke: $color1;
-            stroke-width: 1px;
-          }
-          g.bubble-wrapper {
-            cursor: pointer;
-            circle {
-              fill: $color2;
-              transition: all 500ms;
-            }
-            &.active,
-            &:hover {
-              circle {
-                fill: $color5;
-              }
-              &.parent {
-                circle {
-                  fill: none;
-                }
-              }
-            }
-            text {
-              fill: $color4;
-              font-family: "Source Sans Pro Extra Light";
-              font-weight: 400;
-              letter-spacing: 1px;
-              text-anchor: middle;
-              text-transform: uppercase;
-            }
-            &.parent {
-              circle {
-                fill: none;
-              }
-              circle:hover {
-                fill: none;
-              }
-            }
-          }
-        }
-      }
-      &.name-pane {
-        height: $headerheight;
-        width: 100%;
-        h1 {
-          color: $color2;
-          cursor: pointer;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: $headerheight;
-          margin-left: $headerheight;
-          margin-right: $headerheight;
-          text-transform: uppercase;
-          height: $headerheight;
-        }
-        ul {
-          display: none;
-          width: auto;
-          height: $headerheight;
-          li {
-            color: $color2;
-            display: block;
-            float: left;
-            font-family: "Source Sans Pro Black";
-            line-height: $headerheight;
-            list-style: none;
-            margin-left: 44px;
-          }
-        }
-        &.clickable-name {
-          .x {
-            top: $headerheight / 2;
-          }
-          h1 {
-            font-family: "Source Sans Pro Black";
-          }
-          &.expanded-name-pane {
-            overflow-y: scroll;
-            height: auto;
-            .essay-content {
-              margin-left: $headerheight;
-              margin-top: $headerheight;
-              opacity: 0;
-              width: 600px;
-              -webkit-transition: all 500ms;
-              transition: all 500ms;
-              &.show {
-                opacity: 1;
-              }
-            }
-          } 
-        }
-        &:hover {
-          h1 {
-            color: $color6;
-          }
-          ul {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-  footer.stream-footer {
-    background-color: $color2;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: $headerheight;
-    z-index: 2;
-    -webkit-transition: all 500ms;
-    transition: all 500ms;
-    table {
-      margin-top: $headerheight / 8;
-      width: 100%;
-      //height: $headerheight;
-      tr.header-row {
-        height: $headerheight / 4;
-      }
-      th {
+    .name {
+      float: left;
+      width: 400px;
+      height: $headerheight;
+      h1 {
         font-family: "Source Sans Pro Extra Light";
-        font-size: $headerheight / 4;
-        height: $headerheight / 4;
+        font-size: $headerheight * (2/3);
       }
-      td {
-        font-family: "Source Sans Pro Black";
-        font-size: $headerheight * (1/3);
-        height: $headerheight * (1/3);
+      &.essay {
+        h1 {
+          color: $color4;
+          cursor: pointer;
+          font-family: "Source Sans Pro Black";
+        }
+        .essay-wrapper {
+          margin-top: $headerheight;
+          width: 600px;
+          p {
+            color: $color4;
+          }
+        }
+        .x {
+          opacity: 0;
+        }
+        &.expanded {
+          clear: both;
+          position: relative;
+          width: 100%;
+          height: auto;
+          .x {
+            opacity: 1;
+          }
+        }
       }
-      th,
-      td {
-        color: $color4;
-        display: block;
-        float: left;
-        list-style: none;
-        margin-left: $headerheight / 4;
-        text-align: left;
-        width: $headerheight * 4;
-        text-transform: uppercase;
-      }
-      th.mid-small,
-      td.mid-small {
-        width: $headerheight * 3;
-      }
-      th.small,
-      td.small {
-        width: $headerheight * 1;
-      }
-      th.large,
-      td.large {
-        width: $headerheight * 12;
-      }
-    }
-    &.hidden {
-      bottom: -$headerheight;
     }
   }
 }
-table.inspector {
-  background-color: rgba(0,0,0,.5);
-  padding: 11px;
-  width: auto;
+
+svg {
+  g.bubble-wrapper {
+    cursor: pointer;
+    circle {
+      fill: $color2;
+      transition: all 500ms;
+    }
+    &.active,
+    &:hover {
+      circle {
+        fill: $color6;
+      }
+      &.parent {
+        circle {
+          fill: none;
+        }
+      }
+    }
+    text {
+      fill: $color7;
+      font-family: "Source Sans Pro Extra Light";
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+    &.parent {
+      circle {
+        fill: none;
+      }
+      circle:hover {
+        fill: none;
+      }
+    }
+  }
+  path.county {
+    stroke: $color1;
+    stroke-width: 0.25px;
+  }
+  path.state {
+    fill: transparent;
+    pointer-events: none;
+    stroke: $color1;
+    stroke-width: 1px;
+  }
+  .x-axis {
+    path.domain {
+      fill: none;
+    }
+    text {
+      fill: $color7;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: 15px;
+    }
+  }
 }
+
+
 .inspector {
   position: absolute;
   width: 200px;
   height: 44px;
   li {
-    color: $color4;
+    color: $color7;
     font-size: 13px;
     line-height: 22px;
     font-family: "Source Sans Pro Extra Light";
@@ -582,7 +208,7 @@ table.inspector {
   }
   th,
   td {
-    color: $color4;
+    color: $color7;
     float: left;
     font-size: 13px;
     line-height: 22px;
@@ -621,5 +247,71 @@ table.key {
     text-transform: uppercase;
     width: 178px;
     height: 22px;
+  }
+}
+.words-overlay {
+  background-color: rgba(255,255,255,.75);
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: $headerheight;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 44px);
+  z-index: 3;
+  .words {
+    margin-top: $headerheight;
+    margin-left: $headerheight;
+    padding-right: 22px;
+    padding-bottom: 22px;
+    overflow-y: scroll;
+    width: 600px;
+    height: 100%;
+    h1 {
+      font-size: $headerheight;
+      margin-bottom: $headerheight;
+      text-transform: uppercase;
+    }
+    br {
+      height: 33px;
+    }
+    p {
+      color: $color1;
+      margin-bottom: 0;
+      padding-bottom: 88px;
+      width: 100%;
+    }
+  }
+}
+ul.controls {
+  position: absolute;
+  top: ($headerheight * 2) + ($headerheight / 2);
+  left: $headerheight;
+  width: $headerheight * 6;
+  z-index: 2;
+  li {
+    background-color: $color2;
+    color: $color7;
+    cursor: pointer;
+    display: block;
+    font-family: "Source Sans Pro Extra Light";
+    font-size: $headerheight * (1/3);
+    line-height: $headerheight;
+    list-style: none;
+    margin-top: $headerheight / 4;
+    text-align: center;
+    text-transform: uppercase;
+    height: $headerheight;
+    transition: all 500ms;
+    &:hover {
+      background-color: $color5;
+    }
+    &.active {
+      background-color: $color5;
+      font-family: "Source Sans Pro Black";
+    }
+  }
+  &.clicked {
+    height: auto;
   }
 }
