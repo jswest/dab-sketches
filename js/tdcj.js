@@ -2,12 +2,6 @@ DAB.LastWordsInteractive = function (el) {
 
   var that = this;
 
-  el.append('<h3 class="interlude-kicker">Interlude</h3>');
-  el.append('<h1 class="interlude-title">Last Words in Texas</h1>');
-  el.append('<h2 class="interlude-subtitle">The most common last words from the Condemned in Texas</h2>');
-
-
-
   var colors = [
     'rgb(70,62,64)',
     'rgb(68,70,79)',
@@ -19,11 +13,15 @@ DAB.LastWordsInteractive = function (el) {
     .domain([0,1,2,3,4])
     .range(colors)
 
+  var paragraphize = function (input) {
+    input = '<p>' + input + '</p>';
+    input.replace(/<br \/>/g, '</p><p>');
+    return input;
+  };
 
   this.build = function () {
     d3.json('data/last-words.json', function (data) {
 
-      var data = data.slice(0, 50);
       var data = {
         "name": "words",
         "children": data
@@ -82,7 +80,7 @@ DAB.LastWordsInteractive = function (el) {
             '<div class="words">' +
               '<button class="x"></button>' +
               '<h1>' + d.name + '</h1>' +
-              d.statement +
+              paragraphize(d.statement) +
             '</div>' +
           '</div>');
         el.find('.words-overlay').on('click', function (e) {

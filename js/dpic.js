@@ -17,11 +17,6 @@ DAB.ModernExecutionsInteractive = function (el) {
     });
   };
 
-  var createTitle = function () {
-    el.append('<h3 class="interlude-kicker">Interlude</h3>');
-    el.append('<h1 class="interlude-title">Modern Executions</h1>');
-  };
-
   var colorIndex = {
     "white": 0,
     "black": 1,
@@ -103,20 +98,19 @@ DAB.ModernExecutionsInteractive = function (el) {
   this.build = function () {
 
     createControls();
-    createTitle();
 
     var sizes = {
       elWidth: el.width(),
-      elHeight: el.height(),
+      elHeight: $(window).height() - 44,
       width: el.width() - 88, // this shouldn't be hardcoded. we should have a sizes global
-      height: el.height() - 88,
+      height: $(window).height() - 132,
       top: 44,
       left: 44
     };
 
     var svg = d3.select(el[0]).append('svg')
-      .attr('width', el.width())
-      .attr('height', el.height());
+      .attr('width', sizes.elWidth)
+      .attr('height', sizes.elHeight);
 
     d3.json('data/dpic.json', function (data) {
       

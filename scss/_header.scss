@@ -1,0 +1,38 @@
+header#primary-header {
+  background-color: $color5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $headerheight;
+  z-index: 3;
+  h1 {
+    color: $color3;
+    font-size: $headerheight / 2;
+    line-height: $headerheight;
+    padding-left: $headerheight;
+    text-transform: uppercase;
+  }
+  nav {
+    position: absolute;
+    top: 0;
+    right: $headerheight;
+    width: 200px;
+    button {
+      color: $color3;
+      float: right;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: $headerheight / 2;
+      margin-left: $headerheight / 2;
+      margin-top: $headerheight / 4;
+      text-transform: uppercase;
+      height: $headerheight / 2;
+      -webkit-transition: opacity 0.5s;
+      transition: opacity 0.5s;
+      &.discourage {
+        opacity: .5;
+      }
+    }
+  }
+}

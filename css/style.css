@@ -2,30 +2,12 @@
   margin: 0;
   padding: 0; }
 
-html,
-body {
-  overflow: hidden;
-  width: 100%;
-  height: 100%; }
-
-body {
-  background-color: #231f20; }
-
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3 {
   color: #8c7c80;
   font-family: "Source Sans Pro Black";
-  font-weight: 400; }
-
-p {
-  color: white;
-  font-family: "PT Serif";
-  font-size: 15px;
-  line-height: 33px;
-  margin-bottom: 33px; }
+  font-size: 44px;
+  line-height: 1;
+  text-transform: uppercase; }
 
 button {
   background-color: transparent;
@@ -34,9 +16,8 @@ button {
   cursor: pointer;
   display: block;
   font-family: "Source Sans Pro Extra Light"; }
-
-button:focus {
-  outline: none; }
+  button:focus {
+    outline: none; }
 
 .x {
   background-image: url("../images/big-x.png");
@@ -47,41 +28,21 @@ button:focus {
   width: 100px;
   height: 100px; }
 
-.modals {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 2; }
-  .modals.show {
-    display: block; }
-  .modals article.about {
-    background-color: #231f20;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; }
-    .modals article.about .about-guts {
-      overflow-y: auto;
-      width: 100%;
-      height: 100%; }
-      .modals article.about .about-guts section {
-        margin-top: 44px;
-        margin-left: 44px;
-        width: 600px; }
-        .modals article.about .about-guts section:first-child {
-          margin-top: 88px; }
-        .modals article.about .about-guts section:last-child {
-          margin-bottom: 44px; }
-        .modals article.about .about-guts section h1 {
-          font-size: 44px;
-          letter-spacing: 2.2px;
-          text-transform: uppercase; }
-    .modals article.about.hide {
-      display: none; }
+p {
+  color: #d2bbc0;
+  font-family: "PT Serif";
+  font-size: 15px;
+  line-height: 33px;
+  margin-bottom: 33px; }
 
-header.primary-header {
+html,
+body {
+  background-color: #231f20;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; }
+
+header#primary-header {
   background-color: black;
   position: absolute;
   top: 0;
@@ -89,18 +50,18 @@ header.primary-header {
   width: 100%;
   height: 44px;
   z-index: 3; }
-  header.primary-header h1 {
+  header#primary-header h1 {
     color: #8c7c80;
     font-size: 22px;
     line-height: 44px;
     padding-left: 44px;
     text-transform: uppercase; }
-  header.primary-header nav {
+  header#primary-header nav {
     position: absolute;
     top: 0;
     right: 44px;
     width: 200px; }
-    header.primary-header nav button {
+    header#primary-header nav button {
       color: #8c7c80;
       float: right;
       font-size: 18px;
@@ -112,341 +73,192 @@ header.primary-header {
       height: 22px;
       -webkit-transition: opacity 0.5s;
       transition: opacity 0.5s; }
-      header.primary-header nav button.discourage {
+      header#primary-header nav button.discourage {
         opacity: .5; }
 
-.stream-wrapper {
-  overflow: hidden;
+#minimap {
+  cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 220px;
+  height: calc(100% - 44px);
+  z-index: 3;
+  -webkit-transition: all 500ms;
+  transition: all 500ms; }
+  #minimap #minimap-list {
+    padding-bottom: 22px;
+    position: relative;
+    left: 22px;
+    width: 200px;
+    height: auto; }
+    #minimap #minimap-list li {
+      font-size: 11px;
+      line-height: 22px;
+      list-style: none;
+      position: relative;
+      width: 100%;
+      z-index: 1; }
+      #minimap #minimap-list li.year {
+        color: #8c7c80;
+        font-family: "Source Sans Pro Extra Light";
+        padding-top: 11px;
+        margin-left: 22px; }
+      #minimap #minimap-list li.interlude {
+        color: #00b3ff;
+        font-family: "Source Sans Pro Black";
+        padding-top: 11px;
+        text-transform: uppercase; }
+      #minimap #minimap-list li.name {
+        color: white;
+        font-family: "Source Sans Pro Black";
+        margin-left: 22px;
+        text-transform: uppercase; }
+    #minimap #minimap-list .color {
+      background-color: #463e40;
+      opacity: 0.75;
+      position: absolute;
+      top: 0;
+      left: -22px;
+      width: 220px;
+      height: 100%;
+      z-index: 0;
+      -webkit-transition: all 500ms;
+      transition: all 500ms; }
+  #minimap.collapsed {
+    right: -200px; }
+    #minimap.collapsed #minimap-list .color {
+      opacity: 0; }
+    #minimap.collapsed:hover {
+      right: 0; }
+      #minimap.collapsed:hover #minimap-list .color {
+        opacity: 0.75; }
+
+#stream-wrapper {
+  overflow-y: scroll;
   position: absolute;
   top: 44px;
   left: 0;
   width: 100%;
   height: calc(100% - 44px); }
-  .stream-wrapper .stream-modals {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2; }
-    .stream-wrapper .stream-modals .blur {
-      background-image: -webkit-linear-gradient(90deg, black 0%, transparent 50%, black 100%);
-      background-size: 100% 100%;
-      opacity: .1;
-      pointer-events: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%; }
-  .stream-wrapper nav.minimap {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: -150px;
-    width: 172px;
-    height: 100%;
-    z-index: 2;
-    -webkit-transition: all 500ms;
-    transition: all 500ms; }
-    .stream-wrapper nav.minimap .minimap-background-color {
-      background-color: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      -webkit-transition: opacity 500ms;
-      transition: opacity 500ms; }
-    .stream-wrapper nav.minimap ol {
-      overflow: scroll;
-      padding-top: 44px;
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2; }
-      .stream-wrapper nav.minimap ol li {
-        color: white;
-        font-family: "Source Sans Pro Black";
-        font-size: 11px;
-        list-style: none;
-        line-height: 11px;
-        margin-left: 22px;
-        margin-bottom: 11px;
-        text-transform: uppercase; }
-        .stream-wrapper nav.minimap ol li.minimap-interlude {
-          color: #00aeef; }
-        .stream-wrapper nav.minimap ol li.minimap-year {
-          color: white;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: 11px;
-          margin-top: 11px;
-          text-align: center; }
-    .stream-wrapper nav.minimap:hover, .stream-wrapper nav.minimap.faux-hover {
-      right: 0; }
-      .stream-wrapper nav.minimap:hover .minimap-background-color, .stream-wrapper nav.minimap.faux-hover .minimap-background-color {
-        opacity: 1; }
-  .stream-wrapper .stream {
-    overflow: hidden;
-    overflow-y: scroll;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; }
-    .stream-wrapper .stream .year-marker {
-      margin-bottom: 22px;
-      margin-top: 88px; }
-      .stream-wrapper .stream .year-marker h1 {
-        color: #463e40;
-        margin-left: 44px; }
-    .stream-wrapper .stream .pane {
-      position: relative;
-      width: 100%;
-      height: 100%; }
-      .stream-wrapper .stream .pane.narration h1 {
-        font-size: 88px;
-        line-height: 88px;
-        margin-left: 44px;
-        margin-top: -176px;
-        position: absolute;
-        top: 50%;
-        height: 88px;
-        text-transform: uppercase; }
-      .stream-wrapper .stream .pane.narration h2 {
-        color: #463e40;
-        font-size: 22px;
-        line-height: 22px;
-        margin-top: 88px;
-        margin-left: 44px;
-        position: absolute;
-        top: 50%;
-        height: 22px;
-        text-transform: uppercase; }
-      .stream-wrapper .stream .pane.narration p {
-        color: #8c7c80;
-        font-family: "Source Sans Pro Black";
-        font-size: 33px;
-        line-height: 44px;
-        margin-top: 200px;
-        margin-left: 44px;
-        width: 800px; }
-      .stream-wrapper .stream .pane.interactive {
-        margin-top: 176px;
-        position: relative;
-        height: calc(44px + 100%); }
-        .stream-wrapper .stream .pane.interactive svg {
-          position: relative;
-          top: 44px; }
-        .stream-wrapper .stream .pane.interactive h3.interlude-kicker {
-          color: #00aeef;
-          font-family: "Source Sans Pro Black";
-          font-size: 11px;
-          letter-spacing: 2px;
-          position: absolute;
-          top: 0;
-          left: 44px;
-          text-transform: uppercase; }
-        .stream-wrapper .stream .pane.interactive h1.interlude-title {
-          font-size: 44px;
-          text-transform: uppercase;
-          position: absolute;
-          top: 22px;
-          left: 44px; }
-        .stream-wrapper .stream .pane.interactive h2.interlude-subtitle {
-          color: #44464f;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: 22px;
-          text-transform: uppercase;
-          position: absolute;
-          top: 88px;
-          left: 44px; }
-        .stream-wrapper .stream .pane.interactive ul.controls {
-          position: absolute;
-          top: 110px;
-          left: 44px;
-          width: 264px;
-          z-index: 2; }
-          .stream-wrapper .stream .pane.interactive ul.controls li {
-            background-color: #463e40;
-            color: white;
-            cursor: pointer;
-            display: block;
-            font-family: "Source Sans Pro Extra Light";
-            font-size: 14.66667px;
-            line-height: 44px;
-            list-style: none;
-            margin-top: 11px;
-            text-align: center;
-            text-transform: uppercase;
-            height: 44px;
-            transition: all 500ms; }
-            .stream-wrapper .stream .pane.interactive ul.controls li:hover {
-              background-color: #00aeef; }
-            .stream-wrapper .stream .pane.interactive ul.controls li.active {
-              background-color: #00aeef;
-              font-family: "Source Sans Pro Black"; }
-          .stream-wrapper .stream .pane.interactive ul.controls.clicked {
-            height: auto; }
-        .stream-wrapper .stream .pane.interactive .words-overlay {
-          background-color: rgba(255, 255, 255, 0.75);
-          cursor: pointer;
-          overflow: hidden;
-          position: fixed;
-          top: 44px;
-          left: 0;
-          width: 100%;
-          height: calc(100% - 44px);
-          z-index: 3; }
-          .stream-wrapper .stream .pane.interactive .words-overlay .words {
-            margin-top: 44px;
-            margin-left: 44px;
-            width: 600px;
-            height: auto; }
-            .stream-wrapper .stream .pane.interactive .words-overlay .words h1 {
-              font-size: 44px;
-              margin-bottom: 44px;
-              text-transform: uppercase; }
-            .stream-wrapper .stream .pane.interactive .words-overlay .words p {
-              color: #231f20;
-              width: 100%; }
-        .stream-wrapper .stream .pane.interactive svg rect {
-          cursor: pointer; }
-        .stream-wrapper .stream .pane.interactive svg .x-axis path.domain {
-          fill: none;
-          stroke: none; }
-        .stream-wrapper .stream .pane.interactive svg .x-axis text {
-          fill: white;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: 11px;
-          text-anchor: beginning; }
-        .stream-wrapper .stream .pane.interactive svg path.county {
-          stroke: #231f20;
-          stroke-width: 0.25px; }
-        .stream-wrapper .stream .pane.interactive svg path.state {
-          fill: transparent;
-          pointer-events: none;
-          stroke: #231f20;
-          stroke-width: 1px; }
-        .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper {
-          cursor: pointer; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper circle {
-            fill: #463e40;
-            transition: all 500ms; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active circle, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover circle {
-            fill: #00aeef; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.active.parent circle, .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper:hover.parent circle {
-            fill: none; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper text {
-            fill: white;
-            font-family: "Source Sans Pro Extra Light";
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-anchor: middle;
-            text-transform: uppercase; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.parent circle {
-            fill: none; }
-          .stream-wrapper .stream .pane.interactive svg g.bubble-wrapper.parent circle:hover {
-            fill: none; }
-      .stream-wrapper .stream .pane.name-pane {
-        height: 44px;
-        width: 100%; }
-        .stream-wrapper .stream .pane.name-pane h1 {
-          color: #463e40;
-          cursor: pointer;
-          font-family: "Source Sans Pro Extra Light";
-          font-size: 44px;
-          margin-left: 44px;
-          margin-right: 44px;
-          text-transform: uppercase;
-          height: 44px; }
-        .stream-wrapper .stream .pane.name-pane ul {
-          display: none;
-          width: auto;
-          height: 44px; }
-          .stream-wrapper .stream .pane.name-pane ul li {
-            color: #463e40;
-            display: block;
-            float: left;
-            font-family: "Source Sans Pro Black";
-            line-height: 44px;
-            list-style: none;
-            margin-left: 44px; }
-        .stream-wrapper .stream .pane.name-pane.clickable-name .x {
-          top: 22px; }
-        .stream-wrapper .stream .pane.name-pane.clickable-name h1 {
-          font-family: "Source Sans Pro Black"; }
-        .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane {
-          overflow-y: scroll;
-          height: auto; }
-          .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane .essay-content {
-            margin-left: 44px;
-            margin-top: 44px;
-            opacity: 0;
-            width: 600px;
-            -webkit-transition: all 500ms;
-            transition: all 500ms; }
-            .stream-wrapper .stream .pane.name-pane.clickable-name.expanded-name-pane .essay-content.show {
-              opacity: 1; }
-        .stream-wrapper .stream .pane.name-pane:hover h1 {
-          color: #8c7c80; }
-        .stream-wrapper .stream .pane.name-pane:hover ul {
-          display: block; }
-  .stream-wrapper footer.stream-footer {
-    background-color: #463e40;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 44px;
-    z-index: 2;
-    -webkit-transition: all 500ms;
-    transition: all 500ms; }
-    .stream-wrapper footer.stream-footer table {
-      margin-top: 5.5px;
-      width: 100%; }
-      .stream-wrapper footer.stream-footer table tr.header-row {
-        height: 11px; }
-      .stream-wrapper footer.stream-footer table th {
-        font-family: "Source Sans Pro Extra Light";
-        font-size: 11px;
-        height: 11px; }
-      .stream-wrapper footer.stream-footer table td {
-        font-family: "Source Sans Pro Black";
-        font-size: 14.66667px;
-        height: 14.66667px; }
-      .stream-wrapper footer.stream-footer table th,
-      .stream-wrapper footer.stream-footer table td {
-        color: white;
-        display: block;
-        float: left;
-        list-style: none;
-        margin-left: 11px;
-        text-align: left;
-        width: 176px;
-        text-transform: uppercase; }
-      .stream-wrapper footer.stream-footer table th.mid-small,
-      .stream-wrapper footer.stream-footer table td.mid-small {
-        width: 132px; }
-      .stream-wrapper footer.stream-footer table th.small,
-      .stream-wrapper footer.stream-footer table td.small {
-        width: 44px; }
-      .stream-wrapper footer.stream-footer table th.large,
-      .stream-wrapper footer.stream-footer table td.large {
-        width: 528px; }
-    .stream-wrapper footer.stream-footer.hidden {
-      bottom: -44px; }
 
-table.inspector {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 11px;
-  width: auto; }
+#stream {
+  padding-bottom: 44px; }
+  #stream .interlude {
+    opacity: 1;
+    -webkit-transition: opacity 500ms;
+    transition: opacity 500ms; }
+    #stream .interlude.out {
+      opacity: 0; }
+  #stream .pane {
+    clear: both;
+    position: relative;
+    width: 100%; }
+    #stream .pane.narration h1, #stream .pane.narration h2, #stream .pane.narration h3 {
+      margin-left: 44px;
+      position: absolute; }
+    #stream .pane.narration h1.project-title {
+      font-size: 88px;
+      top: calc(50% - 176px); }
+    #stream .pane.narration h2.byline {
+      color: #463e40;
+      font-size: 22px;
+      top: calc(50% + 88px); }
+    #stream .pane.narration p {
+      color: #8c7c80;
+      font-family: "Source Sans Pro Black";
+      font-size: 33px;
+      line-height: 44px;
+      margin-top: 200px;
+      margin-left: 44px;
+      width: 800px; }
+    #stream .pane.narration h1.title {
+      font-size: 88px;
+      position: absolute;
+      top: calc(50% - 44px); }
+    #stream .pane.narration h2.subtitle {
+      color: #463e40;
+      font-family: "Source Sans Pro Extra Light";
+      font-size: 22px;
+      position: absolute;
+      top: calc(50% + 44px); }
+    #stream .pane.narration h3.kicker {
+      color: #00b3ff;
+      font-size: 14.66667px;
+      position: absolute;
+      top: calc(50% - 88px); }
+  #stream .year {
+    clear: both;
+    position: relative;
+    left: 44px;
+    width: calc(100% - 44px); }
+    #stream .year .year-marker {
+      padding-top: 44px; }
+      #stream .year .year-marker h1 {
+        color: #463e40;
+        font-size: 29.33333px; }
+    #stream .year .name {
+      float: left;
+      width: 400px;
+      height: 44px; }
+      #stream .year .name h1 {
+        font-family: "Source Sans Pro Extra Light";
+        font-size: 29.33333px; }
+      #stream .year .name.essay h1 {
+        color: #d2bbc0;
+        cursor: pointer;
+        font-family: "Source Sans Pro Black"; }
+      #stream .year .name.essay .essay-wrapper {
+        margin-top: 44px;
+        width: 600px; }
+        #stream .year .name.essay .essay-wrapper p {
+          color: #d2bbc0; }
+      #stream .year .name.essay .x {
+        opacity: 0; }
+      #stream .year .name.essay.expanded {
+        clear: both;
+        position: relative;
+        width: 100%;
+        height: auto; }
+        #stream .year .name.essay.expanded .x {
+          opacity: 1; }
+
+svg g.bubble-wrapper {
+  cursor: pointer; }
+  svg g.bubble-wrapper circle {
+    fill: #463e40;
+    transition: all 500ms; }
+  svg g.bubble-wrapper.active circle, svg g.bubble-wrapper:hover circle {
+    fill: #00b3ff; }
+  svg g.bubble-wrapper.active.parent circle, svg g.bubble-wrapper:hover.parent circle {
+    fill: none; }
+  svg g.bubble-wrapper text {
+    fill: white;
+    font-family: "Source Sans Pro Extra Light";
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-anchor: middle;
+    text-transform: uppercase; }
+  svg g.bubble-wrapper.parent circle {
+    fill: none; }
+  svg g.bubble-wrapper.parent circle:hover {
+    fill: none; }
+svg path.county {
+  stroke: #231f20;
+  stroke-width: 0.25px; }
+svg path.state {
+  fill: transparent;
+  pointer-events: none;
+  stroke: #231f20;
+  stroke-width: 1px; }
+svg .x-axis path.domain {
+  fill: none; }
+svg .x-axis text {
+  fill: white;
+  font-family: "Source Sans Pro Extra Light";
+  font-size: 15px; }
 
 .inspector {
   position: absolute;
@@ -490,7 +302,7 @@ table.key {
     width: 22px;
     height: 22px; }
   table.key td {
-    color: white;
+    color: #d2bbc0;
     font-family: "Source Sans Pro Extra Light";
     font-size: 11px;
     line-height: 22px;
@@ -498,3 +310,61 @@ table.key {
     text-transform: uppercase;
     width: 178px;
     height: 22px; }
+
+.words-overlay {
+  background-color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 44px);
+  z-index: 3; }
+  .words-overlay .words {
+    margin-top: 44px;
+    margin-left: 44px;
+    padding-right: 22px;
+    padding-bottom: 22px;
+    overflow-y: scroll;
+    width: 600px;
+    height: 100%; }
+    .words-overlay .words h1 {
+      font-size: 44px;
+      margin-bottom: 44px;
+      text-transform: uppercase; }
+    .words-overlay .words br {
+      height: 33px; }
+    .words-overlay .words p {
+      color: #231f20;
+      margin-bottom: 0;
+      padding-bottom: 88px;
+      width: 100%; }
+
+ul.controls {
+  position: absolute;
+  top: 110px;
+  left: 44px;
+  width: 264px;
+  z-index: 2; }
+  ul.controls li {
+    background-color: #463e40;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-family: "Source Sans Pro Extra Light";
+    font-size: 14.66667px;
+    line-height: 44px;
+    list-style: none;
+    margin-top: 11px;
+    text-align: center;
+    text-transform: uppercase;
+    height: 44px;
+    transition: all 500ms; }
+    ul.controls li:hover {
+      background-color: black; }
+    ul.controls li.active {
+      background-color: black;
+      font-family: "Source Sans Pro Black"; }
+  ul.controls.clicked {
+    height: auto; }
