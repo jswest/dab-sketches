@@ -137,7 +137,7 @@ header#primary-header {
         opacity: 0.75; }
 
 #stream-wrapper {
-  background-color: #231f20;
+  background-color: #463e40;
   overflow-y: scroll;
   position: absolute;
   top: 44px;
@@ -147,7 +147,7 @@ header#primary-header {
   -webkit-transition: background-color 1s;
   transition: background-color 1s; }
   #stream-wrapper.active-interlude {
-    background-color: black; }
+    background-color: #231f20; }
 
 #stream {
   padding-bottom: 44px; }
@@ -171,11 +171,11 @@ header#primary-header {
       position: absolute; }
     #stream .pane.narration h1.project-title {
       font-size: 88px;
-      top: 200px; }
+      top: calc(50% - 176px); }
     #stream .pane.narration h2.byline {
       color: #463e40;
       font-size: 22px;
-      top: 376px; }
+      top: calc(50% + 88px); }
     #stream .pane.narration p {
       color: #8c7c80;
       font-family: "Source Sans Pro Black";

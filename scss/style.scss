@@ -17,7 +17,7 @@ $headerheight: 44px;
 
 
 #stream-wrapper {
-  background-color: $color1;
+  background-color: $color2;
   overflow-y: scroll;
   position: absolute;
   top: $headerheight;
@@ -27,7 +27,7 @@ $headerheight: 44px;
   -webkit-transition: background-color 1s;
   transition: background-color 1s;
   &.active-interlude {
-    background-color: $color5;
+    background-color: $color1;
   }
 }
 
@@ -61,12 +61,12 @@ $headerheight: 44px;
       }
       h1.project-title {
         font-size: $headerheight * 2;
-        top: 200px;
+        top: calc(50% - 176px);
       }
       h2.byline {
         color: $color2;
         font-size: $headerheight / 2;
-        top: 200px + 88px + 88px;
+        top: calc(50% + 88px);
       }
       p {
         color: $color3;
