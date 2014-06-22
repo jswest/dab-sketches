@@ -17,17 +17,24 @@ $headerheight: 44px;
 
 
 #stream-wrapper {
+  background-color: $color1;
   overflow-y: scroll;
   position: absolute;
   top: $headerheight;
   left: 0;
   width: 100%;
   height: calc(100% - 44px);
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+  &.active-interlude {
+    background-color: $color5;
+  }
 }
 
 #stream {
   padding-bottom: $headerheight;
   .interlude {
+    padding-bottom: 200px;
     opacity: 1;
     -webkit-transition: opacity 500ms;
     transition: opacity 500ms;
@@ -47,12 +54,12 @@ $headerheight: 44px;
       }
       h1.project-title {
         font-size: $headerheight * 2;
-        top: calc(50% - 176px);
+        top: 200px;
       }
       h2.byline {
         color: $color2;
         font-size: $headerheight / 2;
-        top: calc(50% + 88px);
+        top: 200px + 88px + 88px;
       }
       p {
         color: $color3;

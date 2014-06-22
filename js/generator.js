@@ -19,8 +19,10 @@ DAB.Generator = function () {
       if (currentYear < year) {
         minimap.append('li').attr('class', 'year').text(year);
         yearWrapper = stream.append('div')
-          .attr('class', 'year')
+          .classed('year', true)
+          .classed('view-section', true)
           .attr('id', 'year-' + year)
+          .attr('data-slug', year);
         yearWrapper.append('div').attr('class', 'year-marker').append('h1').text(year);
         currentYear = year;
       }
@@ -62,10 +64,11 @@ DAB.Generator = function () {
       $minimap.find('li.year').eq(interlude.position).before('<li class="interlude">' + interlude.name + '</li>');
       $stream.find('.year')
         .eq(interlude.position)
-        .before('<article class="interlude"></article>');
+        .before('<article class="interlude view-section"></article>');
       if (i === 0) {
         $('.interlude').addClass('out');
       }
+      $('article.interlude').eq(i).data('slug', interlude.slug);
       for (var j = 0; j < interlude.panes.length; j++) {
         var pane = interlude.panes[j];
         if (pane.type !== "interactive") {

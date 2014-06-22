@@ -1,11 +1,12 @@
 [
   {
     "name": "opening",
+    "slug": "opening",
     "position": 0,
     "panes": [
       {
         "type": "narration",
-        "content": "<h1 class='project-title'>Damnatio ad Bestias</h1><h2 class='byline'>By Galen Beebe, Karim Hajj, Gabe Isman, and John West</h2>"
+        "content": "<h1 class='project-title px'>Damnatio ad Bestias</h1><h2 class='byline px'>By Galen Beebe, Karim Hajj, Gabe Isman, and John West</h2>"
       },
       {
         "type": "narration",
@@ -18,7 +19,8 @@
     ]
   },
   {
-    "name": "last words in texas",
+    "name": "last words",
+    "slug": "last-words",
     "position": 7,
     "panes": [
       {
@@ -42,6 +44,7 @@
   },
   {
     "name": "unusual punishment",
+    "slug": "unusual-punishment",
     "position": 12,
     "panes": [
       {
@@ -61,6 +64,7 @@
   },
   {
     "name": "how we kill",
+    "slug": "how-we-kill",
     "position": 17,
     "panes": [
       {
@@ -80,6 +84,7 @@
   },
  {
     "name": "modern executions",
+    "slug": "modern-executions",
     "position": 35,
     "panes": [
       {
