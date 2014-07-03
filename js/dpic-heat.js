@@ -1,3 +1,15 @@
+/*
+expects topo.json
+under "objects", it expects "counties" and "states" objects.
+for each of the "counties" geometry, it expects a "properties" object with
+{
+  "id": [number: fips county/state id],
+  "name": [string: name of county],
+  "count": [boolean | number: false or the number of executions in that county]
+}
+this was really involved to get it generated.
+*/
+
 DAB.ModernExecutionsMapInteractive = function (el) {
 
   var that = this;

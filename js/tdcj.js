@@ -1,3 +1,18 @@
+/*
+expects json,
+list of words and counts
+[
+  {
+    "word":"love",
+    "count":582,
+    "statement": "[string]"
+  },
+  ...
+]
+`/scripts/strip-last-words.js` shows how to generate this.
+*/
+
+
 DAB.LastWordsInteractive = function (el) {
 
   el.append('<h1 class="graph-title">Last Words in Texas</h1>');

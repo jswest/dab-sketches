@@ -1,3 +1,28 @@
+/*
+expects json
+list of individual executions,
+[
+  {
+    "date": "01/17/1977",
+    "name": "gary gilmore",
+    "age": "36",
+    "sex": "m",
+    "race": "white",
+    "number / race / sex of victims": "1 white male(s)",
+    "state": "ut",
+    "region": "w",
+    "method": "firing squad",
+    "juvenile": "no",
+    "federal": "no",
+    "volunteer": "yes",
+    "foreign national": "no",
+    "county": "utah"
+  },
+  ...
+]
+
+*/
+
 DAB.ModernExecutionsInteractive = function (el) {
 
   var that = this;
